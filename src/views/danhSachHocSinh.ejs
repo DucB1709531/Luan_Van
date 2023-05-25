@@ -1,0 +1,92 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Học Sinh</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="/danh-sach-hoc-sinh" method="GET">Danh Sách Học Sinh</a>
+        <a href="/them-hoc-sinh-page" method="GET">Thêm Học Sinh</a>
+        <a href="/danh-sach-phu-huynh" method="GET">Danh Sách Phụ Huynh</a>
+        <a href="/them-phu-huynh-page" method="GET">Thêm Phụ Huynh</a>
+        <a href="/danh-sach-giao-vien" method="GET">Danh Sách Giáo Viên</a>
+        <a href="/them-giao-vien-page" method="GET">Thêm Giáo Viên</a>
+        <a href="/danh-sach-lop-hoc" method="GET">Danh Sách Lớp Học</a>
+        <a href="/them-lop-hoc-page" method="GET">Thêm Lớp Học</a>
+    </div>
+    <div>
+        <div class='table-container'>
+            <h2><b>Danh Sách Học Sinh</b></h2>
+            <form action="/danh-sach-hoc-sinh/export" method="GET">
+                <button class="btn-export" type="submit">Xuất File Excel</button>
+            </form>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã Số</th>
+                        <th>Họ Tên</th>
+                        <th>Ngày Sinh</th>
+                        <th>Giới Tính</th>
+                        <th>ID Phụ Huynh</th>
+                        <th>ID Lớp Học</th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0; i< dataHocSinh.length; i++){ %>
+                        <% let day=dataHocSinh[i].ngaySinh.getDate(); let month=dataHocSinh[i].ngaySinh.getMonth() + 1;
+                            let year=dataHocSinh[i].ngaySinh.getFullYear(); let date=day+'/'+month+'/'+year %>
+                            <tr>
+                                <td>
+                                    <%= i+1 %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].id %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].hoTen %>
+                                </td>
+                                <td>
+                                    <%= date %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].gioiTinh %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].idPH %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].idLop %>
+                                </td>
+                                <td>
+                                    <form action="/delete-hoc-sinh" method="POST">
+                                        <input type="text" hidden value="<%= dataHocSinh[i].id %>" name="idHocSinh">
+                                        <button class="btn-sua-tt-hs" type="submit"
+                                            onclick="return confirm('Đưa Học Sinh Này Vào Danh Sách `Đã Nghỉ Học` ?')">Xóa</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/sua-thong-tin-hoc-sinh/<%= dataHocSinh[i].id %>" method="GET">
+                                        <button class="btn-sua-tt-hs" type="submit">Sửa Thông Tin</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% } %>
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

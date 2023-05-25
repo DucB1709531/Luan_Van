@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh Sửa Thông Tin Học Sinh</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="update-user-container">
+        <form action="/post-update-hoc-sinh" method="POST">
+            <div>
+                <label>Họ Tên: </label>
+                <input name="hoTen" value="<%= dataHS.hoTen %>" />
+            </div>
+            <div>
+                <label>Ngày Sinh: </label>
+                <input type="date" name="ngaySinh" value="<%= dataHS.ngaySinh %>" />
+            </div>
+            <div>
+                <label>Giới Tính: </label>
+                <input name="gioiTinh" value="<%= dataHS.gioiTinh %>" />
+            </div>
+            <div>
+                <label>ID Lớp Học: </label>
+                <input name="idLop" value="<%= dataHS.idLop %>" />
+            </div>
+            <div>
+                <input type="text" value="<%= dataHS.id %>" hidden name="id" />
+            </div>
+            <div>
+                <button class="btn6" type="submit" class="btn-save">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

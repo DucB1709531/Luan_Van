@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Tài Khoản</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div>
+        <div class='table-container'>
+            <h2><b>Thông Tin Tài Khoản</b></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Tài Khoản</th>
+                        <th>Tên Tài Khoản</th>
+                        <th>Mật Khẩu</th>
+                        <th>Loại Tài Khoản</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div></div>
+                    <% for(let i=0; i< detailsTaiKhoan.length; i++){ %>
+                        <tr>
+                            <td>
+                                <%= detailsTaiKhoan[i].idTK %>
+                            </td>
+                            <td>
+                                <%= detailsTaiKhoan[i].taiKhoan %>
+                            </td>
+                            <td>
+                                <%= detailsTaiKhoan[i].matKhau %>
+                            </td>
+                            <td>
+                                <%= usertype %>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

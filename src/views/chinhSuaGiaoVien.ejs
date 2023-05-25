@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh Sửa Thông Tin Giáo Viên</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="update-user-container">
+        <form action="/post-update-giao-vien" method="POST">
+            <div>
+                <label>Họ Tên Giáo Viên: </label>
+                <input name="hoTenGV" value="<%= dataGiaoVien.hoTenGV %>" />
+            </div>
+            <div>
+                <label>Số Điện Thoại Giáo Viên: </label>
+                <input name="soDienThoaiGV" value="<%= dataGiaoVien.soDienThoaiGV %>" />
+            </div>
+            <div>
+                <label>Địa Chỉ Giáo Viên: </label>
+                <input name="diaChiGV" value="<%= dataGiaoVien.diaChiGV %>" />
+            </div>
+            <div>
+                <input type="text" value="<%= dataGiaoVien.id %>" hidden name="id" />
+            </div>
+            <div>
+                <button class="btn6" type="submit" class="btn-save">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập Nhật Sức Khỏe Học Sinh</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <h1 class="title-ds-hs"><b>Cập Nhật Tình Hình Sức Khỏe Học Sinh Của Lớp <%= tenLopHoc %> </b></h1>
+    <h2 class="title-ds-hs"><b>Giáo Viên: <%= hoTenGV %></b></h2>
+    <h3 class="title-ds-hs"><b>Sỉ Số: <%= siSo %></b></h3>
+    <form action="/giao-vien/<%= idGV %>/xem-lop-hoc/<%= idLop %>/cap-nhat-suc-khoe/post" method="post">
+        <input type="text" name="idLop" value="<%= idLop %>" hidden>
+        <input type="text" name="idGV" value="<%= idGV %>" hidden>
+        <div class='table-container'>
+            <table class="table">
+                <thead>
+                    <tr bgcolor="#ddd">
+                        <th>STT</th>
+                        <th>Mã Số Hoc sinh</th>
+                        <th>Họ Tên Học Sinh</th>
+                        <th>Chiều Cao (Cm)</th>
+                        <th>Cân Nặng (Kg)</th>
+                        <th>Tình Trạng Sức Khỏe</th>
+                        <th>Số Mũi Vaccine Covid Đã Tiêm</th>
+                        <th>Lịch Khám Sức Khỏe</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0; i< dsHocSinh.length; i++){ %>
+                        <tr>
+
+                            <td>
+                                <%= i+1 %>
+                            </td>
+
+                            <td>
+                                <%= dsHocSinh[i].id %>
+                            </td>
+                            <td>
+                                <%= dsHocSinh[i].hoTen %>
+                            </td>
+                            <td>
+                                <input type="number" name="chieuCao<%= dsHocSinh[i].id %>" required
+                                    value="<%= dsSucKhoe[i].chieuCao %>">
+                            </td>
+                            <td>
+                                <input type="number" name="canNang<%= dsHocSinh[i].id %>" required
+                                    value="<%= dsSucKhoe[i].canNang %>">
+                            </td>
+                            <td>
+                                <input type="text" name="tinhTrangSK<%= dsHocSinh[i].id %>" required
+                                    value="<%= dsSucKhoe[i].tinhTrangSK %>">
+                            </td>
+                            <td>
+                                <input type="number" name="soMuiCovid<%= dsHocSinh[i].id %>" required
+                                    value="<%= dsSucKhoe[i].soMuiCovid %>">
+                            </td>
+                            <td>
+                                <input type="date" name="lichKham<%= dsHocSinh[i].id %>" required
+                                    value="<%= dsSucKhoe[i].lichKham %>">
+                            </td>
+                            <td>
+
+                            </td>
+
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+
+        </div>
+        <button class="btn-submit-nhap-diem" type="submit">Cập Nhật</button>
+        </from>
+</body>
+
+</html>

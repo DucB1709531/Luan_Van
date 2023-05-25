@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Lớp Học Mới</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/danh-sach-hoc-sinh" method="GET">Danh Sách Học Sinh</a>
+        <a href="/them-hoc-sinh-page" method="GET">Thêm Học Sinh</a>
+        <a href="/danh-sach-phu-huynh" method="GET">Danh Sách Phụ Huynh</a>
+        <a href="/them-phu-huynh-page" method="GET">Thêm Phụ Huynh</a>
+        <a href="/danh-sach-giao-vien" method="GET">Danh Sách Giáo Viên</a>
+        <a href="/them-giao-vien-page" method="GET">Thêm Giáo Viên</a>
+        <a href="/danh-sach-lop-hoc" method="GET">Danh Sách Lớp Học</a>
+        <a class="active" href="/them-lop-hoc-page" method="GET">Thêm Lớp Học</a>
+    </div>
+
+    <div class='create-user-container'>
+        <form action="/tao-lop-hoc-moi" method="POST">
+            <div><b>Tạo Lớp Học Mới:</b></div>
+            <div>
+                <label>Tên Lớp:</label required>
+                <input type="text" name="tenLop" />
+            </div>
+            <div>
+                <label>ID Giáo Viên:</label>
+                <input type="text" name="idGV" />
+            </div>
+            <div>
+                <label for="idKhoi">Chọn Khối Lớp:</label>
+                <select name="idKhoi">
+                    <option value="1">Khối Lớp 1</option>
+                    <option value="2">Khối Lớp 2</option>
+                    <option value="3">Khối Lớp 3</option>
+                    <option value="4">Khối Lớp 4</option>
+                    <option value="5">Khối Lớp 5</option>
+                </select>
+            </div>
+            <div>
+                <label for="idLoaiLop">Chọn Loại Lớp:</label>
+                <select name="idLoaiLop">
+                    <option value="1">Lớp Bán Trú</option>
+                    <option value="2">Lớp Không Bán Trú</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <button class="btn6" type="submit" class="btn-submit">Thêm</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

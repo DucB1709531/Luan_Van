@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sức Khỏe Học Sinh
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bangDiem.css">
+</head>
+
+<body>
+    <br>
+    <h1 class="title-ds-hs"><b>Theo Dõi Sức Khỏe Học Sinh</b></h1>
+    <h1 class="title-ds-hs"><b>Học Sinh: <%= hoTenHS %></b></h1>
+    <h1 class="title-ds-hs"><b>Lớp: <%= tenLop %></b></h1>
+    <h2 class="title-ds-hs"><b>Giáo Viên: <%= hoTenGV %></b></h2>
+
+    <table class="table">
+        <thead>
+            <tr bgcolor="#ddd">
+                <th>Mã Số Hoc sinh</th>
+                <th>Họ Tên Học Sinh</th>
+                <th>Chiều Cao (Cm)</th>
+                <th>Cân Nặng (Kg)</th>
+                <th>Tình Trạng Sức Khỏe</th>
+                <th>Số Mũi Vaccine Covid Đã Tiêm</th>
+                <th>Lịch Khám Sức Khỏe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= idHS %>
+                </td>
+                <td>
+                    <%= hoTenHS %>
+                </td>
+                <td>
+                    <%= sucKhoeHS.chieuCao %>
+                </td>
+                <td>
+                    <%= sucKhoeHS.canNang %>
+                </td>
+                <td>
+                    <%= sucKhoeHS.tinhTrangSK %>
+                </td>
+                <td>
+                    <%= sucKhoeHS.soMuiCovid %>
+                </td>
+                <td>
+                    <%= sucKhoeHS.lichKham %>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

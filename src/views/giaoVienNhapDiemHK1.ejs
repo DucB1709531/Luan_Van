@@ -1,0 +1,117 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Điểm Học Kỳ 1</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bangDiem.css">
+</head>
+
+<body>
+    <br>
+    <h1 class="title-ds-hs"><b>Nhập Điểm Học Kỳ 1</b></h1>
+    <h1 class="title-ds-hs"><b>Lớp <%= tenLopHoc %></b></h1>
+    <h2 class="title-ds-hs"><b>Giáo Viên: <%= hoTenGV %></b></h2>
+    <h3 class="title-ds-hs"><b>Sỉ Số: <%= siSo %></b></h3>
+    <button class="btn-nhap-diem-file"
+        onclick="location.href = '/giao-vien/<%= idGV %>/nhap-diem-tu-file/hoc-ky-1/<%= idLop %>'">Nhập Điểm Từ
+        File</button>
+    <button class="btn-nhap-diem-file"
+        onclick="location.href = '/giao-vien/<%= idGV %>/xuat-mau-file-nhap-diem/<%= idLop %>'">Xuất Mẫu File
+        Nhập Điểm</button>
+
+    <form action="/giao-vien/<%= idGV %>/nhap-diem/hoc-ky-1/<%= idLop %>/post" method="post">
+        <input type="text" name="idLop" value="<%= idLop %>" hidden>
+        <input type="text" name="idGV" value="<%= idGV %>" hidden>
+        <div class="bang-diem">
+            <table border="1">
+                <tr bgcolor="#ddd">
+                    <th>Số Thứ Tự</th>
+                    <th>Mã Số Học Sinh</th>
+                    <th>Họ tên</th>
+                    <th>Toán</th>
+                    <th>Tiếng Việt</th>
+                    <th>Đạo Đức</th>
+                    <th>Tự Nhiên & Xã Hội</th>
+                    <th>Khoa Học</th>
+                    <th>Lịch Sử & Địa Lý</th>
+                    <th>Thể Dục</th>
+                    <th>Âm Nhạc</th>
+                    <th>Rèn Luyện</th>
+                    <th>Nhận Xét Của Giáo Viên</th>
+                </tr>
+                <% let a=[]%>
+                    <% for(let i=0; i< dataHocSinh.length; i++){ %>
+
+                        <tr>
+                            <td>
+                                <%= i+1 %>
+                            </td>
+                            <td>
+                                <%= dataHocSinh[i].id %>
+                            </td>
+                            <td>
+                                <%= dataHocSinh[i].hoTen %>
+                            </td>
+                            <td>
+                                <input type="number" name="diemToan<%= dataHocSinh[i].id %>" required min="0" max="10">
+                            </td>
+                            <td>
+                                <input type="number" name="diemTiengViet<%= dataHocSinh[i].id %>" required min="0"
+                                    max="10">
+                            </td>
+                            <td>
+                                <input type="number" name="diemDaoDuc<%= dataHocSinh[i].id %>" required min="0"
+                                    max="10">
+                            </td>
+                            <td>
+                                <input type="number" name="diemTNXH<%= dataHocSinh[i].id %>" required min="0" max="10">
+                            </td>
+                            <td>
+                                <input type="number" name="diemKhoaHoc<%= dataHocSinh[i].id %>" required min="0"
+                                    max="10">
+                            </td>
+                            <td>
+                                <input type="number" name="diemLSDL<%= dataHocSinh[i].id %>" required min="0" max="10">
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemTheDuc<%= dataHocSinh[i].id %>">
+                                        <option value="T">Tốt</option>
+                                        <option value="D">Đạt</option>
+                                        <option value="K">Không Đạt</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemAmNhac<%= dataHocSinh[i].id %>">
+                                        <option value="T">Tốt</option>
+                                        <option value="D">Đạt</option>
+                                        <option value="K">Không Đạt</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemRenLuyen<%= dataHocSinh[i].id %>">
+                                        <option value="T">Tốt</option>
+                                        <option value="K">Khá</option>
+                                        <option value="Y">Yếu</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" name="nhanXet<%= dataHocSinh[i].id %>">
+                            </td>
+                        </tr>
+                        <% } %>
+            </table>
+        </div>
+        <button class="btn-submit-nhap-diem" type="submit">Nhập Điểm</button>
+    </form>
+</body>
+
+</html>

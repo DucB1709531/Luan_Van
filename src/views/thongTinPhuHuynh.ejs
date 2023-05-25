@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Phụ Huynh</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div>
+        <div class='table-container'>
+            <h2><b>Thông Tin Phụ Huynh</b></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ Tên Phụ Huynh</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Địa Chỉ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div></div>
+                    <% for(let i=0; i< detailsPhuHuynh.length; i++){ %>
+                        <tr>
+                            <td>
+                                <%= detailsPhuHuynh[i].id %>
+                            </td>
+                            <td>
+                                <%= detailsPhuHuynh[i].hoTenPH %>
+                            </td>
+                            <td>
+                                <%= detailsPhuHuynh[i].soDienThoai %>
+                            </td>
+                            <td>
+                                <%= detailsPhuHuynh[i].diaChi %>
+                            </td>
+                        </tr>
+                        <form action="/sua-thong-tin-phu-huynh/<%= detailsPhuHuynh[i].id %>" method="GET">
+                            <button class="btn6" type="submit">Sửa Thông Tin</button>
+                        </form>
+                        <% } %>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

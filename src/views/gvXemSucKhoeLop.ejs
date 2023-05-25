@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sức Khỏe Học Sinh</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="/js/xlsx.js"></script>
+</head>
+
+<body>
+    <div class='table-container'>
+        <h1 class="title-ds-hs"><b>Tình Hình Sức Khỏe Học Sinh Của Lớp <%= tenLopHoc %> </b></h1>
+        <h2 class="title-ds-hs"><b>Giáo Viên: <%= hoTenGV %></b></h2>
+        <h3 class="title-ds-hs"><b>Sỉ Số: <%= siSo %></b></h3>
+        <button class="btn-export" onclick="ExportToExcel('xlsx', 'Suc_Khoe_Hoc_Sinh_Lop_<%= tenLopHoc %>')">Xuất File
+            Excel</button>
+        <table id="tbl_exporttable_to_xls" class="table">
+            <thead>
+                <tr bgcolor="#ddd">
+                    <th>STT</th>
+                    <th>Mã Số Hoc sinh</th>
+                    <th>Họ Tên Học Sinh</th>
+                    <th>Chiều Cao (Cm)</th>
+                    <th>Cân Nặng (Kg)</th>
+                    <th>Tình Trạng Sức Khỏe</th>
+                    <th>Số Mũi Vaccine Covid Đã Tiêm</th>
+                    <th>Lịch Khám Sức Khỏe</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i< dsHocSinh.length; i++){ %>
+                    <tr>
+
+                        <td>
+                            <%= i+1 %>
+                        </td>
+
+                        <td>
+                            <%= dsHocSinh[i].id %>
+                        </td>
+                        <td>
+                            <%= dsHocSinh[i].hoTen %>
+                        </td>
+                        <td>
+                            <%= dsSucKhoe[i].chieuCao %>
+                        </td>
+                        <td>
+                            <%= dsSucKhoe[i].canNang %>
+                        </td>
+                        <td>
+                            <%= dsSucKhoe[i].tinhTrangSK %>
+                        </td>
+                        <td>
+                            <%= dsSucKhoe[i].soMuiCovid %>
+                        </td>
+                        <td>
+                            <%= dsSucKhoe[i].lichKham %>
+                        </td>
+                        <td>
+
+                        </td>
+
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

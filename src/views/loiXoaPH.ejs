@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chú Ý!</title>
+    <link rel="stylesheet" href="/css/loiPage.css">
+</head>
+
+<body>
+    <div class="h1-loi-xoa-PH">
+        <br>
+        <h1>Chú Ý! phụ huynh này vẫn còn con em đang theo học</h1>
+        <br>
+        <h1>đưa con em của phụ huynh này vào danh sách đã thôi học?</h1>
+        <form action="/delete-het-luon" method="POST">
+            <input type="text" hidden value="<%= inputPH %>" name="idPH">
+            <button class="btn6" type="submit">Xóa</button>
+        </form>
+        <form>
+            <input class="btn6" type="button" value="Trở Về" onclick="history.back()">
+        </form>
+    </div>
+
+</body>
+
+</html>

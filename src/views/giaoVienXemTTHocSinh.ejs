@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Học Sinh</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div>
+        <div class='table-container'>
+            <h2><b>Thông Tin Học Sinh</b></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ Tên</th>
+                        <th>Ngày Sinh</th>
+                        <th>Giới Tính</th>
+                        <th>ID Phụ Huynh</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div></div>
+                    <tr>
+                        <td>
+                            <%= detailsHocSinh.id %>
+                        </td>
+                        <td>
+                            <%= detailsHocSinh.hoTen %>
+                        </td>
+                        <td>
+                            <%= detailsHocSinh.ngaySinh %>
+                        </td>
+                        <td>
+                            <%= detailsHocSinh.gioiTinh %>
+                        </td>
+                        <td>
+                            <%= detailsHocSinh.idPH %>
+                        </td>
+                    </tr>
+                    <form action="/gv-sua-thong-tin-hoc-sinh/<%= detailsHocSinh.id %>" method="GET">
+                        <button class="btn6" type="submit">Sửa Thông Tin</button>
+                    </form>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

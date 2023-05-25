@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa Thông Tin Lớp Học</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="update-user-container">
+        <form action="/post-update-lop-hoc" method="POST">
+            <div>
+                <label>Tên Lớp: </label>
+                <input name="tenLop" value="<%= detailsLopHoc.tenLop %>" />
+            </div>
+            <div>
+                <label>ID Giáo Viên: </label>
+                <input name="idGV" value="<%= detailsLopHoc.idGV %>" />
+            </div>
+            <div>
+                <label for="idKhoi">Chọn Khối Lớp:</label>
+                <select name="idKhoi">
+                    <option value="<%= idKhoi %>">
+                        <%= tenKhoi %>
+                    </option>
+                    <option value="1">Khối Lớp 1</option>
+                    <option value="2">Khối Lớp 2</option>
+                    <option value="3">Khối Lớp 3</option>
+                    <option value="4">Khối Lớp 4</option>
+                    <option value="5">Khối Lớp 5</option>
+                </select>
+            </div>
+            <div>
+                <label for="idLoaiLop">Chọn Loại Lớp:</label>
+                <select name="idLoaiLop">
+                    <option value="<%= idLoaiLop %>">
+                        <%= tenLoaiLop %>
+                    </option>
+                    <option value="1">Lớp Bán Trú</option>
+                    <option value="2">Lớp Không Bán Trú</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" value="<%= detailsLopHoc.id %>" hidden name="id" />
+            </div>
+            <div>
+                <button class="btn6" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

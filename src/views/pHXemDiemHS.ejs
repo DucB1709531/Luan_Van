@@ -1,0 +1,123 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem Điểm: <%= hoTenHS %>
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bangDiem.css">
+</head>
+
+<body>
+    <br>
+    <h1 class="title-ds-hs"><b>Kết Quả Học Tập</b></h1>
+    <h1 class="title-ds-hs"><b>Học Sinh: <%= hoTenHS %></b></h1>
+    <h1 class="title-ds-hs"><b>Lớp: <%= tenLop %></b></h1>
+    <h2 class="title-ds-hs"><b>Giáo Viên: <%= hoTenGV %></b></h2>
+    <br>
+    <h3 class="title-ds-hs"><b>Bảng điểm học kỳ 1</b></h3>
+    <div class="bang-diem">
+        <table border="1">
+            <tr bgcolor="#ddd">
+                <th>Toán</th>
+                <th>Tiếng Việt</th>
+                <th>Đạo Đức</th>
+                <th>Tự Nhiên & Xã Hội</th>
+                <th>Khoa Học</th>
+                <th>Lịch Sử & Địa Lý</th>
+                <th>Thể Dục</th>
+                <th>Âm Nhạc</th>
+                <th>Rèn Luyện</th>
+                <th>Nhận Xét Của Giáo Viên</th>
+            </tr>
+            <tr>
+                <td>
+                    <%= diemHK1.diemToan %>
+                </td>
+                <td>
+                    <%= diemHK1.diemTiengViet %>
+                </td>
+                <td>
+                    <%= diemHK1.diemDaoDuc %>
+                </td>
+                <td>
+                    <%= diemHK1.diemTNXH %>
+                </td>
+                <td>
+                    <%= diemHK1.diemKhoaHoc %>
+                </td>
+                <td>
+                    <%= diemHK1.diemLSDL %>
+                </td>
+                <td>
+                    <%= diemHK1.diemTheDuc %>
+                </td>
+                <td>
+                    <%= diemHK1.diemAmNhac %>
+                </td>
+                <td>
+                    <%= diemHK1.diemRenLuyen %>
+                </td>
+                <td>
+                    <%= diemHK1.nhanXet %>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <br>
+    <h3 class="title-ds-hs"><b>Bảng điểm học kỳ 2</b></h3>
+    <div class="bang-diem">
+        <table border="1">
+            <tr bgcolor="#ddd">
+                <th>Toán</th>
+                <th>Tiếng Việt</th>
+                <th>Đạo Đức</th>
+                <th>Tự Nhiên & Xã Hội</th>
+                <th>Khoa Học</th>
+                <th>Lịch Sử & Địa Lý</th>
+                <th>Thể Dục</th>
+                <th>Âm Nhạc</th>
+                <th>Rèn Luyện</th>
+                <th>Nhận Xét Của Giáo Viên</th>
+            </tr>
+            <tr>
+                <td>
+                    <%= diemHK2.diemToan %>
+                </td>
+                <td>
+                    <%= diemHK2.diemTiengViet %>
+                </td>
+                <td>
+                    <%= diemHK2.diemDaoDuc %>
+                </td>
+                <td>
+                    <%= diemHK2.diemTNXH %>
+                </td>
+                <td>
+                    <%= diemHK2.diemKhoaHoc %>
+                </td>
+                <td>
+                    <%= diemHK2.diemLSDL %>
+                </td>
+                <td>
+                    <%= diemHK2.diemTheDuc %>
+                </td>
+                <td>
+                    <%= diemHK2.diemAmNhac %>
+                </td>
+                <td>
+                    <%= diemHK2.diemRenLuyen %>
+                </td>
+                <td>
+                    <%= diemHK2.nhanXet %>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+
+</html>

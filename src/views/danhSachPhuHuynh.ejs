@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Phụ Huynh</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/danh-sach-hoc-sinh" method="GET">Danh Sách Học Sinh</a>
+        <a href="/them-hoc-sinh-page" method="GET">Thêm Học Sinh</a>
+        <a class="active" href="/danh-sach-phu-huynh" method="GET">Danh Sách Phụ Huynh</a>
+        <a href="/them-phu-huynh-page" method="GET">Thêm Phụ Huynh</a>
+        <a href="/danh-sach-giao-vien" method="GET">Danh Sách Giáo Viên</a>
+        <a href="/them-giao-vien-page" method="GET">Thêm Giáo Viên</a>
+        <a href="/danh-sach-lop-hoc" method="GET">Danh Sách Lớp Học</a>
+        <a href="/them-lop-hoc-page" method="GET">Thêm Lớp Học</a>
+    </div>
+
+    <div class='table-container'>
+        <h2><b>Danh Sách Phụ Huynh</b></h2>
+        <form action="/danh-sach-phu-huynh/export" method="GET">
+            <button class="btn-export" type="submit">Xuất File Excel</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã Số Phụ Huynh</th>
+                    <th>Họ Tên Phụ Huynh</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Địa Chỉ</th>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i=0; i< dataPhuHuynh.length; i++){ %>
+                    <tr>
+                        <td>
+                            <%= i+1 %>
+                        </td>
+                        <td>
+                            <%= dataPhuHuynh[i].id %>
+                        </td>
+                        <td>
+                            <%= dataPhuHuynh[i].hoTenPH %>
+                        </td>
+                        <td>
+                            <%= dataPhuHuynh[i].soDienThoai %>
+                        </td>
+                        <td>
+                            <%= dataPhuHuynh[i].diaChi %>
+                        </td>
+                        <td>
+                            <form action="/thong-tin-tai-khoan/<%= dataPhuHuynh[i].coTK %>" method="GET">
+                                <button class="btn-sua-tt-hs" type="submit">Xem Tài Khoản</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/delete-phu-huynh" method="POST">
+                                <input type="text" hidden value="<%= dataPhuHuynh[i].id %>" name="idPhuHuynh">
+                                <button class="btn-sua-tt-hs" type="submit"
+                                    onclick="return confirm('Đưa Phụ Huynh Này Vào Danh Sách `Ngưng Tham Gia` ?')">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+
+</html>

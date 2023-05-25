@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Học Sinh</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="/js/xlsx.js"></script>
+</head>
+
+<body>
+    <div>
+        <div class='table-container'>
+            <h2><b>Danh Sách Học Sinh</b></h2>
+            <button class="btn-export" onclick="ExportToExcel('xlsx', 'Danh_Sach_Hoc_Sinh')">Xuất File
+                Excel</button>
+            <table id="tbl_exporttable_to_xls" border="1">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã Số</th>
+                        <th>Họ Tên</th>
+                        <th>Ngày Sinh</th>
+                        <th>Giới Tính</th>
+                        <th>ID Phụ Huynh</th>
+                        <th>ID Lớp Học</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0; i< dataHocSinh.length; i++){ %>
+                        <% let day=dataHocSinh[i].ngaySinh.getDate(); let month=dataHocSinh[i].ngaySinh.getMonth() + 1;
+                            let year=dataHocSinh[i].ngaySinh.getFullYear(); let date=day+'/'+month+'/'+year %>
+                            <tr>
+                                <td>
+                                    <%= i+1 %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].id %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].hoTen %>
+                                </td>
+                                <td>
+                                    <%= date %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].gioiTinh %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].idPH %>
+                                </td>
+                                <td>
+                                    <%= dataHocSinh[i].idLop %>
+                                </td>
+                            </tr>
+                            <% } %>
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

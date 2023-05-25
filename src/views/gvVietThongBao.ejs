@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viết Thông Báo Lớp Học</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <div class="pannel">
+        <!-- <img class="img-pannel" src="/images/truonghoc.png" alt="pannel"> -->
+    </div>
+
+    <div>
+        <div class='table-container'>
+            <h2 class="title-ds-hs"><b>Viết Thông Báo Mới Cho Lớp Học</b></h2>
+            <form action="/giao-vien/<%= idGV %>/xem-lop-hoc/<%= idLop %>/viet-thong-bao-lop/post" method="post">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Tiêu Đề</th>
+                            <th>Nội Dung Thông Báo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <div></div>
+                        <tr>
+                            <td>
+                                <input type="text" name="tieuDe">
+                            </td>
+                            <td>
+                                <input type="text" name="noiDung">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <button class="btn-submit-nhap-diem" type="submit">Thêm Thông Báo</button>
+            </form>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
