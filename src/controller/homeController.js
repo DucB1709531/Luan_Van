@@ -9,6 +9,8 @@ const path = require('path');
 
 // home page
 let getHomepage = async (req, res) => {
+    // await pool.execute(`update phuhuynh SET email = 'huynhduc22031999st@gmail.com'`)
+
     // let workbook = XLSX.readFile('./src/public/file/diem.xlsx');
     // let sheet_name_list = workbook.SheetNames;
     // let xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
@@ -210,7 +212,7 @@ let getThemPhuHuynhPage = (req, res) => {
 }
 
 let themPhuHuynh = async (req, res) => {
-    let { hoTenPH, soDienThoai, diaChi, taiKhoan, matKhau } = req.body;
+    let { hoTenPH, soDienThoai, diaChi, email, taiKhoan, matKhau } = req.body;
     //kiem tra xem tai khoan vua nhap da co trong bang `taikhoan` tren CSDL chua:
     let [tkcu] = await pool.execute('select taiKhoan from `taikhoan` where `taiKhoan` = ?', [taiKhoan])
     // gan chuoi a = tai khoan tim duoc trong cau select tren
@@ -228,8 +230,8 @@ let themPhuHuynh = async (req, res) => {
     let [tk] = await pool.execute('select idTK from `taikhoan` where `taiKhoan` = ?', [taiKhoan])
     let coTK = tk[0].idTK
     //tao phu huynh moi
-    await pool.execute('insert into phuhuynh(hoTenPH, soDienThoai, diaChi, coTK, tinhTrang) values (?, ?, ?, ?, 1)',
-        [hoTenPH, soDienThoai, diaChi, coTK])
+    await pool.execute('insert into phuhuynh(hoTenPH, soDienThoai, diaChi, email, coTK, tinhTrang) values (?, ?, ?, ?, ?, 1)',
+        [hoTenPH, soDienThoai, diaChi, email, coTK])
     return res.redirect('/danh-sach-phu-huynh');
 }
 

@@ -33,6 +33,7 @@
                     <th>Họ Tên Phụ Huynh</th>
                     <th>Số Điện Thoại</th>
                     <th>Địa Chỉ</th>
+                    <th>Email</th>
                     <th> </th>
                     <th> </th>
                 </tr>
@@ -54,6 +55,9 @@
                         </td>
                         <td>
                             <%= dataPhuHuynh[i].diaChi %>
+                        </td>
+                        <td>
+                            <%= dataPhuHuynh[i].email %>
                         </td>
                         <td>
                             <form action="/thong-tin-tai-khoan/<%= dataPhuHuynh[i].coTK %>" method="GET">
