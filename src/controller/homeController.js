@@ -12,7 +12,7 @@ const path = require('path');
 
 // home page
 let getHomepage = async (req, res) => {
-    // await pool.execute(`update phuhuynh SET email = 'huynhduc22031999st@gmail.com'`)
+    // await pool.execute(`update phuhuynh SET email = 'ducb1709531@student.ctu.edu.vn'`)
 
     // let workbook = XLSX.readFile('./src/public/file/diem.xlsx');
     // let sheet_name_list = workbook.SheetNames;
@@ -1183,8 +1183,32 @@ let postgvNhapDiemTuFile = async (req, res) => {
     return res.redirect('/giao-vien/' + idGV + '/xem-lop-hoc')
 }
 
+let gvGuiMailDiem = async (req, res) => {
+    // console.log(req.params)
+    let { idGV, idLop } = req.params
+    let [dsHS] = await pool.execute('select id, idPH from hocsinh where idLop = ?', [idLop])
+    // console.log(dsHS)
+    for (let i = 0; i < dsHS.length; i++) {
+        // console.log(dsHS[i].id)
+        let [namhoc] = await pool.execute('select MAX(id) from namhoc')
+        let a = Object.values(JSON.parse(JSON.stringify(namhoc[0])))
+        // console.log(a[0])
+        let namHoc = a[0];
+        let [diemHK1] = await pool.execute('select * from diem where idHS = ? and idHK = ? and idNamHoc = ?', [dsHS[i].id, 1, namHoc])
+        console.log(diemHK1)
+    }
+    return res.render('guiXongEmailDiem.ejs')
+}
+let gvGuiMailSK = async (req, res) => {
+    return res.send('mail suc khoe ok')
+}
+
 let gvGuiMail = async (req, res) => {
-    const transporter = nodemailer.createTransport(
+    // console.log(req.params)
+    let { idGV, idLop } = req.params
+    let [dsHS] = await pool.execute('select * from hocsinh where idLop = ?', [idLop]);
+    // console.log(dsHS[0])
+    let transporter = nodemailer.createTransport(
         smtpTransport({
             service: 'gmail',
             auth: {
@@ -1194,20 +1218,20 @@ let gvGuiMail = async (req, res) => {
         })
     );
 
-    const mailOptions = {
+    let mailOptions = {
         from: 'huynhduc22031999st@gmail.com',
         to: 'ducb1709531@student.ctu.edu.vn',
         subject: 'Email Subject',
         text: 'Email Content',
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log('Error sending email:', error);
-        } else {
-            console.log('Email sent:', info.response);
-        }
-    });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //     if (error) {
+    //         console.log('Error sending email:', error);
+    //     } else {
+    //         console.log('Email sent:', info.response);
+    //     }
+    // });
     return res.send('da gui email thanh cong!')
 
 }
@@ -1227,5 +1251,5 @@ module.exports = {
     giaoVienCapNhatSucKhoeLop, postGiaoVienCapNhatSucKhoeLop, getViewPhuHuynh, phuHuynhXemThongTinHocSinh,
     phuHuynhXemSucKhoeHocSinh, giaoVienXemDSThongBaoLop, giaoVienVietThongBaoLop, postgiaoVienVietThongBaoLop,
     giaoVienXoaThongBaoLop, PHXemThongBaoLop, getPageExportDSHS, getPageExportDSPH, getPageExportDSGV,
-    gvNhapDiemTuFile, postgvNhapDiemTuFile, gvXuatMauFileNhapDiem, gvGuiMail
+    gvNhapDiemTuFile, postgvNhapDiemTuFile, gvXuatMauFileNhapDiem, gvGuiMail, gvGuiMailDiem, gvGuiMailSK
 }

@@ -82,7 +82,16 @@
             </div>
         </div>
 
-        <a href="/giao-vien/<%= idGV %>/gui-mail/lop/<%= detailsLopHoc.id %>">Gửi Email</a>
+        <div class="dropdown">
+            <button class="dropbtn">Gửi Email
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/giao-vien/<%= idGV %>/gui-email-diem/lop/<%= detailsLopHoc.id %>">Email Thông Báo Điểm</a>
+                <a href="/giao-vien/<%= idGV %>/gui-email-suc-khoe/lop/<%= detailsLopHoc.id %>">Email Báo Cáo Sức
+                    Khỏe</a>
+            </div>
+        </div>
 
 
     </div>

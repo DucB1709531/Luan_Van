@@ -221,8 +221,11 @@ const initWebRoute = (app) => {
 
     router.get('/giao-vien/:idGV/nhap-diem-tu-file/hoc-ky-:idHK/:idLop/post', homeController.postgvNhapDiemTuFile);
 
-    //giáo viên gửi mail tự động cho phụ huynh
-    router.get('/giao-vien/:idGV/gui-mail/lop/:idLop', homeController.gvGuiMail);
+    //page giáo viên gửi mail điểm tự động cho phụ huynh
+    router.get('/giao-vien/:idGV/gui-email-diem/lop/:idLop', homeController.gvGuiMailDiem);
+
+    //page giáo viên gửi mail báo cáo sức khỏe tự động cho phụ huynh
+    router.get('/giao-vien/:idGV/gui-email-suc-khoe/lop/:idLop', homeController.gvGuiMailSK);
 
 
 
