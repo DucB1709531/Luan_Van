@@ -1,10 +1,13 @@
 import { render } from "ejs";
 import pool from "../config/connectDB";
 import { json } from "body-parser";
+import nodemailer from 'nodemailer';
+import smtpTransport from 'nodemailer-smtp-transport';
 // var XLSX = require('xlsx');
 // const multer = require("multer");
 const Lead = require("../../node_modules/lead");
 const path = require('path');
+
 
 
 // home page
@@ -1180,6 +1183,34 @@ let postgvNhapDiemTuFile = async (req, res) => {
     return res.redirect('/giao-vien/' + idGV + '/xem-lop-hoc')
 }
 
+let gvGuiMail = async (req, res) => {
+    const transporter = nodemailer.createTransport(
+        smtpTransport({
+            service: 'gmail',
+            auth: {
+                user: 'huynhduc22031999st@gmail.com',
+                pass: 'ylgrlwtegwebxssj',
+            },
+        })
+    );
+
+    const mailOptions = {
+        from: 'huynhduc22031999st@gmail.com',
+        to: 'ducb1709531@student.ctu.edu.vn',
+        subject: 'Email Subject',
+        text: 'Email Content',
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log('Error sending email:', error);
+        } else {
+            console.log('Email sent:', info.response);
+        }
+    });
+    return res.send('da gui email thanh cong!')
+
+}
 
 
 
@@ -1196,5 +1227,5 @@ module.exports = {
     giaoVienCapNhatSucKhoeLop, postGiaoVienCapNhatSucKhoeLop, getViewPhuHuynh, phuHuynhXemThongTinHocSinh,
     phuHuynhXemSucKhoeHocSinh, giaoVienXemDSThongBaoLop, giaoVienVietThongBaoLop, postgiaoVienVietThongBaoLop,
     giaoVienXoaThongBaoLop, PHXemThongBaoLop, getPageExportDSHS, getPageExportDSPH, getPageExportDSGV,
-    gvNhapDiemTuFile, postgvNhapDiemTuFile, gvXuatMauFileNhapDiem
+    gvNhapDiemTuFile, postgvNhapDiemTuFile, gvXuatMauFileNhapDiem, gvGuiMail
 }
