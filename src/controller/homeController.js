@@ -1186,6 +1186,7 @@ let postgvNhapDiemTuFile = async (req, res) => {
 let gvGuiMailDiem = async (req, res) => {
     // console.log(req.params)
     let { idGV, idLop } = req.params
+    // lấy id, họ tên và id phụ huynh của lớp
     let [dsHS] = await pool.execute('select id, hoTen, idPH from hocsinh where idLop = ?', [idLop])
     // console.log(dsHS)
     for (let i = 0; i < dsHS.length; i++) {
@@ -1202,9 +1203,49 @@ let gvGuiMailDiem = async (req, res) => {
         // lấy điểm học kỳ 1
         let [diemHK1] = await pool.execute('select * from diem where idHS = ? and idHK = ? and idNamHoc = ?', [dsHS[i].id, 1, namHoc])
         // console.log(diemHK1[0])
+        let stringA = JSON.stringify(diemHK1)
+        // console.log(stringA)
+        let diem1 = {}
+        if (stringA == '[]') {
+            diem1 = {
+                idNamHoc: namHoc,
+                idHK: 1,
+                diemToan: 'chưa có',
+                diemTiengViet: 'chưa có',
+                diemDaoDuc: 'chưa có',
+                diemTNXH: 'chưa có',
+                diemKhoaHoc: 'chưa có',
+                diemLSDL: 'chưa có',
+                diemTheDuc: 'chưa có',
+                diemAmNhac: 'chưa có',
+                diemRenLuyen: 'chưa có',
+                nhanXet: 'chưa có'
+            }
+        }
+        else { diem1 = diemHK1[0] }
+        // console.log(diem1)
         // lấy điểm học kỳ 2
         let [diemHK2] = await pool.execute('select * from diem where idHS = ? and idHK = ? and idNamHoc = ?', [dsHS[i].id, 2, namHoc])
-
+        let stringB = JSON.stringify(diemHK2)
+        let diem2 = {}
+        if (stringB == '[]') {
+            diem2 = {
+                idNamHoc: namHoc,
+                idHK: 2,
+                diemToan: 'chưa có',
+                diemTiengViet: 'chưa có',
+                diemDaoDuc: 'chưa có',
+                diemTNXH: 'chưa có',
+                diemKhoaHoc: 'chưa có',
+                diemLSDL: 'chưa có',
+                diemTheDuc: 'chưa có',
+                diemAmNhac: 'chưa có',
+                diemRenLuyen: 'chưa có',
+                nhanXet: 'chưa có'
+            }
+        }
+        else { diem2 = diemHK2[0] }
+        // console.log(diem2)
         //tạo transporter gmail
         let transporter = nodemailer.createTransport(
             smtpTransport({
@@ -1219,23 +1260,29 @@ let gvGuiMailDiem = async (req, res) => {
         // lời chào đầu email
         let loiChao = 'Chào quý phụ huynh, tôi là giáo viên chủ nhiệm của em ' + dsHS[i].hoTen + '.\nĐây là kết quả học tập của em trong năm học này.\nKính mời quý phụ huynh xem qua.'
         // điểm học kỳ 1
-        let mailTextHK1 = '\n\nHọc Kỳ 1:\nĐiểm toán: ' + diemHK1[0].diemToan + '\nĐiểm Tiếng Việt: ' + diemHK1[0].diemTiengViet + '\nĐiểm Đạo Đức: ' + diemHK1[0].diemDaoDuc + '\nĐiểm Tự Nhiên & Xã Hội: ' + diemHK1[0].diemTNXH + '\nĐiểm Khoa Học: ' + diemHK1[0].diemKhoaHoc + '\nĐiểm Lịch Sử & Địa Lý: ' + diemHK1[0].diemLSDL + '\nĐiểm Thể Dục: ' + diemHK1[0].diemTheDuc + '\nĐiểm Âm Nhạc: ' + diemHK1[0].diemAmNhac + '\nĐiểm Rèn Luyện: ' + diemHK1[0].diemRenLuyen + '\nNhận Xét Của Giáo Viên: ' + diemHK1[0].nhanXet
+        let mailTextHK1 = '\n\nHọc Kỳ 1:\nĐiểm toán: ' + diem1.diemToan + '\nĐiểm Tiếng Việt: ' + diem1.diemTiengViet + '\nĐiểm Đạo Đức: ' + diem1.diemDaoDuc + '\nĐiểm Tự Nhiên & Xã Hội: ' + diem1.diemTNXH + '\nĐiểm Khoa Học: ' + diem1.diemKhoaHoc + '\nĐiểm Lịch Sử & Địa Lý: ' + diem1.diemLSDL + '\nĐiểm Thể Dục: ' + diem1.diemTheDuc + '\nĐiểm Âm Nhạc: ' + diem1.diemAmNhac + '\nĐiểm Rèn Luyện: ' + diem1.diemRenLuyen + '\nNhận Xét Của Giáo Viên: ' + diem1.nhanXet
         // điểm học kỳ 2
-        let mailTextHK2 = '\n\nHọc Kỳ 2:\nĐiểm toán: ' + diemHK2[0].diemToan + '\nĐiểm Tiếng Việt: ' + diemHK2[0].diemTiengViet + '\nĐiểm Đạo Đức: ' + diemHK2[0].diemDaoDuc + '\nĐiểm Tự Nhiên & Xã Hội: ' + diemHK2[0].diemTNXH + '\nĐiểm Khoa Học: ' + diemHK2[0].diemKhoaHoc + '\nĐiểm Lịch Sử & Địa Lý: ' + diemHK2[0].diemLSDL + '\nĐiểm Thể Dục: ' + diemHK2[0].diemTheDuc + '\nĐiểm Âm Nhạc: ' + diemHK2[0].diemAmNhac + '\nĐiểm Rèn Luyện: ' + diemHK2[0].diemRenLuyen + '\nNhận Xét Của Giáo Viên: ' + diemHK2[0].nhanXet
-        let mailText = loiChao + mailTextHK1 + mailTextHK2 // nội dung mail
+        let mailTextHK2 = '\n\nHọc Kỳ 2:\nĐiểm toán: ' + diem2.diemToan + '\nĐiểm Tiếng Việt: ' + diem2.diemTiengViet + '\nĐiểm Đạo Đức: ' + diem2.diemDaoDuc + '\nĐiểm Tự Nhiên & Xã Hội: ' + diem2.diemTNXH + '\nĐiểm Khoa Học: ' + diem2.diemKhoaHoc + '\nĐiểm Lịch Sử & Địa Lý: ' + diem2.diemLSDL + '\nĐiểm Thể Dục: ' + diem2.diemTheDuc + '\nĐiểm Âm Nhạc: ' + diem2.diemAmNhac + '\nĐiểm Rèn Luyện: ' + diem2.diemRenLuyen + '\nNhận Xét Của Giáo Viên: ' + diem2.nhanXet
+        // lấy họ tên giáo viên gắn vào lời kết
+        let [tenGV] = await pool.execute('select hotenGV from giaovien where id = ?', [idGV])
+        let hoTenGV = tenGV[0].hotenGV //họ tên giáo viên
+        // console.log(hoTenGV)
+        // lời kết Email
+        let loiKet = '\n\nTrân Trọng.\n' + hoTenGV + ' - Trường Tiểu Học Nguyễn Du'
+        let mailText = loiChao + mailTextHK1 + mailTextHK2 + loiKet// nội dung mail
         let mailOptions = {
             from: 'huynhduc22031999st@gmail.com', // người gửi (ở đây làm ví dụ nên lấy email riêng của em)
             to: email, //người nhận (email của phụ huy), ở đây làm ví dụ nên lấy email của em (email trường cấp)
-            subject: 'Kết Quả Học Tập Của Học Sinh ' + dsHS[i].hoTen + ', Năm Học ' + diemHK1[0].idNamHoc, //tiêu đề email
+            subject: 'Kết Quả Học Tập Của Học Sinh ' + dsHS[i].hoTen + ', Năm Học ' + diem1.idNamHoc, //tiêu đề email
             text: mailText, // nội dung e mail
         };
 
-        // gửi mail cho phụ huynh học sinh (dsHS[i])
+        // gửi mail cho phụ huynh học sinh(dsHS[i])
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) { // nếu lỗi: console.log lỗi
                 console.log('Lỗi Gửi Email:', error);
             } else {// nếu đã gửi được: thông báo đã gửi xong
-                console.log('Email đã gửi:', info.response);
+                console.log('Email đã gửi đến <' + email + '> thành công');
             }
         });
 
@@ -1243,7 +1290,54 @@ let gvGuiMailDiem = async (req, res) => {
     return res.render('guiXongEmailDiem.ejs') // render ra thông báo đã gửi xong
 }
 let gvGuiMailSK = async (req, res) => {
-    return res.send('mail suc khoe ok')
+    let { idGV, idLop } = req.params
+    // console.log(idGV, idLop)
+    // lấy id, họ tên và id phụ huynh của lớp
+    let [dsHS] = await pool.execute('select id, hoTen, idPH from hocsinh where idLop = ?', [idLop])
+    for (let i = 0; i < dsHS.length; i++) {
+        // lấy email của phụ huynh để gửi
+        let [phuhuynh] = await pool.execute('select email from phuhuynh where id = ?', [dsHS[i].idPH])
+        let email = phuhuynh[0].email // email phụ huynh
+        let [suckhoe] = await pool.execute('select * from suckhoe where idHS = ?', [dsHS[i].id])
+        // console.log(suckhoe[0])
+        let sucKhoe = suckhoe[0]
+        let transporter = nodemailer.createTransport(
+            smtpTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'huynhduc22031999st@gmail.com',
+                    pass: 'ylgrlwtegwebxssj',
+                },
+            })
+        );
+        // console.log(sucKhoe)
+        let d = sucKhoe.lichKham
+        // console.log(d.toLocaleDateString())
+        let date = d.toLocaleDateString()
+        let loiChao = 'Chào quý phụ huynh, tôi là giáo viên chủ nhiệm của em ' + dsHS[i].hoTen + '\nĐây là báo cáo tình hình sức khỏe của em\nMời quý phụ huynh xe qua.'
+        let [tenGV] = await pool.execute('select hotenGV from giaovien where id = ?', [idGV])
+        let hoTenGV = tenGV[0].hotenGV //họ tên giáo viên
+        // console.log(hoTenGV)
+        // lời kết Email
+        let loiKet = '\n\nTrân Trọng.\n' + hoTenGV + ' - Trường Tiểu Học Nguyễn Du'
+        let baoCao = '\n\nHọ Tên: ' + dsHS[i].hoTen + '\nMã số học sinh: ' + sucKhoe.idHS + '\nChiều Cao: ' + sucKhoe.chieuCao + ' (Cm)\nCân Nặng: ' + sucKhoe.canNang + ' (Kg)\nTình Trạng Sức Khỏe: ' + sucKhoe.tinhTrangSK + '\nSố Mũi Covid Đã Tiêm: ' + sucKhoe.soMuiCovid + '\nLịch Khám Sức Khỏe: ' + date
+        let mailOptions = {
+            from: 'huynhduc22031999st@gmail.com',
+            to: email,
+            subject: 'Báo Cáo Tình Hình Sức Khỏe Hoc Sinh' + dsHS[i].hoTen,
+            text: loiChao + baoCao + loiKet,
+        };
+        // gửi mail cho phụ huynh học sinh(dsHS[i])
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) { // nếu lỗi: console.log lỗi
+                console.log('Lỗi Gửi Email:', error);
+            } else {// nếu đã gửi được: thông báo đã gửi xong
+                console.log('Email đã gửi đến <' + email + '> thành công');
+            }
+        });
+
+    }
+    return res.render('guiXongMailSK.ejs')
 }
 
 let gvGuiMail = async (req, res) => {
@@ -1260,6 +1354,7 @@ let gvGuiMail = async (req, res) => {
             },
         })
     );
+
 
     let mailOptions = {
         from: 'huynhduc22031999st@gmail.com',
