@@ -307,7 +307,8 @@ let getThemGiaoVienPage = (req, res) => {
 }
 
 let themGiaoVien = async (req, res) => {
-    let { hoTenGV, soDienThoaiGV, diaChiGV, taiKhoan, matKhau } = req.body;
+    let { hoTenGV, soDienThoaiGV, email, diaChiGV, taiKhoan, matKhau } = req.body;
+    console.log(email)
     //kiem tra xem tai khoan vua nhap da co trong bang `taikhoan` tren CSDL chua:
     let [tkcu] = await pool.execute('select taiKhoan from `taikhoan` where `taiKhoan` = ?', [taiKhoan])
     // gan chuoi a = tai khoan tim duoc trong cau select tren
@@ -325,8 +326,8 @@ let themGiaoVien = async (req, res) => {
     let [tk] = await pool.execute('select idTK from `taikhoan` where `taiKhoan` = ?', [taiKhoan])
     let coTK = tk[0].idTK
     //tao giao vien moi
-    await pool.execute('insert into giaovien(hoTenGV, soDienThoaiGV, diaChiGV, coTK, tinhTrang) values (?, ?, ?, ?, ?)',
-        [hoTenGV, soDienThoaiGV, diaChiGV, coTK, 1])
+    await pool.execute('insert into giaovien(hoTenGV, soDienThoaiGV, email, diaChiGV, coTK, tinhTrang) values (?, ?, ?, ?, ?, ?)',
+        [hoTenGV, soDienThoaiGV, email, diaChiGV, coTK, 1])
     return res.redirect('/danh-sach-giao-vien');
 }
 
@@ -1057,9 +1058,47 @@ let postgiaoVienVietThongBaoLop = async (req, res) => {
     let date = year + '-' + month + '-' + day
     // console.log(date)
 
+    let [hocsinh] = await pool.execute('select * from hocsinh where idLop = ?', [idLop])
+    // console.log(hocsinh)
+    for (let i = 0; i < hocsinh.length; i++) { // lấy email và họ tên phụ huynh để gửi email cho phụ huynh
+        let [phuhuynh] = await pool.execute('select email, hoTenPH from phuhuynh where id = ?', [hocsinh[i].idPH])
+        // console.log(phuhuynh[0])
+        let { email, hoTenPH } = phuhuynh[0] // email, họ tên phụ huynh
+        // console.log(email, hoTenPH)
+
+        let transporter = nodemailer.createTransport(
+            smtpTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'huynhduc22031999st@gmail.com',
+                    pass: 'ylgrlwtegwebxssj',
+                },
+            })
+        );
+        let loiChaoMail = 'Kính chào phụ huynh: ' + hoTenPH + '.\nLớp học của em ' + hocsinh[i].hoTen + ' vừa có thông báo mới.\nMời quý phụ huynh xem qua.\n\n'
+        let noiDungMail = 'Tiêu đề: ' + tieuDe + '\nNội dung thông báo: ' + noiDung
+        let loiKetMail = '\n\nTrân Trọng.\n\n' + hoTenGV + ' - Trường Tiểu Học Nguyễn Du'
+        let mailOptions = {
+            from: 'huynhduc22031999st@gmail.com',
+            to: email,
+            subject: 'Thông Báo Mới Từ Lớp Học Của Em ' + hocsinh[i].hoTen,
+            text: loiChaoMail + noiDungMail + loiKetMail,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Lỗi Gửi Email:', error);
+            } else {
+                console.log('Email đã gửi đến <' + email + '> thành công!');
+            }
+        });
+    }
+
+    // thêm thông báo vào CSDL
     await pool.execute('insert into thongbao(idLop, tieuDe, noiDung, ngayViet, nguoiViet) values(?, ?, ?, ?, ?)',
         [idLop, tieuDe, noiDung, date, hoTenGV])
 
+    // quay về view xem lớp học
     let b = '/giao-vien/' + idGV + '/xem-lop-hoc/' + idLop + '/xem-thong-bao-lop'
     return res.redirect(b)
 }
@@ -1282,13 +1321,14 @@ let gvGuiMailDiem = async (req, res) => {
             if (error) { // nếu lỗi: console.log lỗi
                 console.log('Lỗi Gửi Email:', error);
             } else {// nếu đã gửi được: thông báo đã gửi xong
-                console.log('Email đã gửi đến <' + email + '> thành công');
+                console.log('Email đã gửi đến <' + email + '> thành công!');
             }
         });
 
     }
     return res.render('guiXongEmailDiem.ejs') // render ra thông báo đã gửi xong
 }
+
 let gvGuiMailSK = async (req, res) => {
     let { idGV, idLop } = req.params
     // console.log(idGV, idLop)
@@ -1332,7 +1372,7 @@ let gvGuiMailSK = async (req, res) => {
             if (error) { // nếu lỗi: console.log lỗi
                 console.log('Lỗi Gửi Email:', error);
             } else {// nếu đã gửi được: thông báo đã gửi xong
-                console.log('Email đã gửi đến <' + email + '> thành công');
+                console.log('Email đã gửi đến <' + email + '> thành công!');
             }
         });
 
