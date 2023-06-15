@@ -1,62 +1,104 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sức Khỏe Học Sinh
-    </title>
+    <title>Sức Khỏe Học Sinh</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bangDiem.css">
+    <style>
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
 </head>
 
 <body>
-    <br>
-    <h1 class="title-ds-hs"><b>Theo Dõi Sức Khỏe Học Sinh</b></h1>
-    <h1 class="title-ds-hs"><b>Học Sinh: <%= hoTenHS %></b></h1>
-    <h1 class="title-ds-hs"><b>Lớp: <%= tenLop %></b></h1>
-    <h2 class="title-ds-hs"><b>Giáo Viên: <%= hoTenGV %></b></h2>
+    <h1 class="title-ds-hs"><b>Phiếu Theo Dõi Sức Khỏe Học Sinh</b></h1>
+    <h2 class="title-ds-hs" style="font-style: italic;">(Dành cho học sinh tiểu học)</h2>
 
-    <table class="table">
-        <thead>
-            <tr bgcolor="#ddd">
-                <th>Mã Số Hoc sinh</th>
-                <th>Họ Tên Học Sinh</th>
-                <th>Chiều Cao (Cm)</th>
-                <th>Cân Nặng (Kg)</th>
-                <th>Tình Trạng Sức Khỏe</th>
-                <th>Số Mũi Vaccine Covid Đã Tiêm</th>
-                <th>Lịch Khám Sức Khỏe</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="table-thong-tin">
+        <table border="1">
             <tr>
+                <td>Tên học sinh: <%= hoTenHS %>
+                </td>
+                <td>Lớp: <%= tenLop %>
+                </td>
+                <td>Trường: TIỂU HỌC NGUYỄN DU</td>
+            </tr>
+            <tr>
+                <td colspan="2">Phụ Huynh: <%= hoTenPH %>
+                </td>
+                <td colspan="2">SĐT: <%= soDienThoaiPH %>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">Giáo Viên: <%= hoTenGV %>
+                </td>
+                <td colspan="2">SĐT: <%= soDienThoaiGV %>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="table-sk">
+        <table border="1">
+            <tr>
+                <th>Mã Số Học Sinh</th>
                 <td>
                     <%= idHS %>
                 </td>
+            </tr>
+            <tr>
+                <th>Họ Tên Học Sinh</th>
                 <td>
                     <%= hoTenHS %>
                 </td>
+            </tr>
+            <tr>
+                <th>Chiều Cao (Cm)</th>
                 <td>
                     <%= sucKhoeHS.chieuCao %>
                 </td>
+            </tr>
+            <tr>
+                <th>Cân Nặng (Kg)</th>
                 <td>
                     <%= sucKhoeHS.canNang %>
                 </td>
+            </tr>
+            <tr>
+                <th>Tình Trạng Sức Khỏe</th>
                 <td>
                     <%= sucKhoeHS.tinhTrangSK %>
                 </td>
+            </tr>
+            <tr>
+                <th>Số Mũi Vaccine Covid Đã Tiêm</th>
                 <td>
                     <%= sucKhoeHS.soMuiCovid %>
                 </td>
+            </tr>
+            <tr>
+                <th>Lịch Khám Sức Khỏe</th>
                 <td>
                     <%= sucKhoeHS.lichKham %>
                 </td>
-
             </tr>
-        </tbody>
-    </table>
-
+        </table>
+    </div>
 </body>
 
 </html>
