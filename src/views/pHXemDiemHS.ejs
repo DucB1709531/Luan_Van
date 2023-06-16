@@ -8,116 +8,214 @@
     </title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bangDiem.css">
+
+
 </head>
 
 <body>
     <br>
-    <h1 class="title-ds-hs"><b>Kết Quả Học Tập</b></h1>
-    <h1 class="title-ds-hs"><b>Học Sinh: <%= hoTenHS %></b></h1>
-    <h1 class="title-ds-hs"><b>Lớp: <%= tenLop %></b></h1>
-    <h2 class="title-ds-hs"><b>Giáo Viên: <%= hoTenGV %></b></h2>
+    <h1 class="title-ds-hs"><b>Phiếu Đánh Giá Kết Quả Học Tập</b></h1>
+    <h2 class="title-ds-hs"><b>(Dành cho học sinh tiểu học)</b></h2>
     <br>
-    <h3 class="title-ds-hs"><b>Bảng điểm học kỳ 1</b></h3>
+    <form action="/generate-pdf" method="get">
+        <input name="idHS" value="<%= idHS %>">
+        <input name="idPH" value="<%= idPH %>">
+        <button class="heading" type="submit">Xuất Ra file PDF</button>
+    </form>
+
+    <h4 class="heading"><b>1. Thông tin:</b></h4>
+    <div class="bang-diem">
+        <table border="1">
+            <tr>
+                <td>Tên học sinh: <b>
+                        <%= hoTenHS %>
+                    </b>
+                </td>
+                <td>Lớp: <b>
+                        <%= tenLop %>
+                    </b>
+                </td>
+                <td>Trường: <b>TIỂU HỌC NGUYỄN DU</b></td>
+            </tr>
+            <tr>
+                <td>Phụ Huynh: <b>
+                        <%= hoTenPH %>
+                    </b>
+                </td>
+                <td colspan="2">SĐT: <b>
+                        <%= soDienThoaiPH %>
+                    </b>
+                </td>
+            </tr>
+            <tr>
+                <td>Giáo Viên: <b>
+                        <%= hoTenGV %>
+                    </b>
+                </td>
+                <td colspan="2">SĐT: <b>
+                        <%= soDienThoaiGV %>
+                    </b>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h4 class="heading"><b>2. Kết quả học tập:</b></h4>
     <div class="bang-diem">
         <table border="1">
             <tr bgcolor="#ddd">
-                <th>Toán</th>
-                <th>Tiếng Việt</th>
-                <th>Đạo Đức</th>
-                <th>Tự Nhiên & Xã Hội</th>
-                <th>Khoa Học</th>
-                <th>Lịch Sử & Địa Lý</th>
-                <th>Thể Dục</th>
-                <th>Âm Nhạc</th>
-                <th>Rèn Luyện</th>
-                <th>Nhận Xét Của Giáo Viên</th>
+                <th>STT</th>
+                <th>Môn Học</th>
+                <th>Điểm Học Kỳ 1</th>
+                <th>Điểm Học Kỳ 2</th>
+                <th>Điểm Trung Bình Cả Năm</th>
             </tr>
             <tr>
+                <td>1</td>
+                <td>Toán</td>
                 <td>
                     <%= diemHK1.diemToan %>
                 </td>
                 <td>
-                    <%= diemHK1.diemTiengViet %>
+                    <%= diemHK2.diemToan %>
                 </td>
                 <td>
-                    <%= diemHK1.diemDaoDuc %>
+                    <%= diemCN.diemToan %>
                 </td>
-                <td>
-                    <%= diemHK1.diemTNXH %>
-                </td>
-                <td>
-                    <%= diemHK1.diemKhoaHoc %>
-                </td>
-                <td>
-                    <%= diemHK1.diemLSDL %>
-                </td>
-                <td>
-                    <%= diemHK1.diemTheDuc %>
-                </td>
-                <td>
-                    <%= diemHK1.diemAmNhac %>
-                </td>
-                <td>
-                    <%= diemHK1.diemRenLuyen %>
-                </td>
-                <td>
-                    <%= diemHK1.nhanXet %>
-                </td>
-            </tr>
-
-        </table>
-    </div>
-    <br>
-    <h3 class="title-ds-hs"><b>Bảng điểm học kỳ 2</b></h3>
-    <div class="bang-diem">
-        <table border="1">
-            <tr bgcolor="#ddd">
-                <th>Toán</th>
-                <th>Tiếng Việt</th>
-                <th>Đạo Đức</th>
-                <th>Tự Nhiên & Xã Hội</th>
-                <th>Khoa Học</th>
-                <th>Lịch Sử & Địa Lý</th>
-                <th>Thể Dục</th>
-                <th>Âm Nhạc</th>
-                <th>Rèn Luyện</th>
-                <th>Nhận Xét Của Giáo Viên</th>
             </tr>
             <tr>
+                <td>2</td>
+                <td>Tiếng Việt</td>
                 <td>
-                    <%= diemHK2.diemToan %>
+                    <%= diemHK1.diemTiengViet %>
                 </td>
                 <td>
                     <%= diemHK2.diemTiengViet %>
                 </td>
                 <td>
+                    <%= diemCN.diemTiengViet %>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Đạo Đức</td>
+                <td>
+                    <%= diemHK1.diemDaoDuc %>
+                </td>
+                <td>
                     <%= diemHK2.diemDaoDuc %>
+                </td>
+                <td>
+                    <%= diemCN.diemDaoDuc %>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Tự Nhiên & Xã Hội</td>
+                <td>
+                    <%= diemHK1.diemTNXH %>
                 </td>
                 <td>
                     <%= diemHK2.diemTNXH %>
                 </td>
                 <td>
+                    <%= diemCN.diemTNXH %>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Khoa Học</td>
+                <td>
+                    <%= diemHK1.diemKhoaHoc %>
+                </td>
+                <td>
                     <%= diemHK2.diemKhoaHoc %>
+                </td>
+                <td>
+                    <%= diemCN.diemKhoaHoc %>
+                </td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Lịch Sử & Địa Lý</td>
+                <td>
+                    <%= diemHK1.diemLSDL %>
                 </td>
                 <td>
                     <%= diemHK2.diemLSDL %>
                 </td>
                 <td>
+                    <%= diemCN.diemLSDL %>
+                </td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Thể Dục</td>
+                <td>
+                    <%= diemHK1.diemTheDuc %>
+                </td>
+                <td>
                     <%= diemHK2.diemTheDuc %>
+                </td>
+                <td>
+                    <%= diemCN.diemTheDuc %>
+                </td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Âm Nhạc</td>
+                <td>
+                    <%= diemHK1.diemAmNhac %>
                 </td>
                 <td>
                     <%= diemHK2.diemAmNhac %>
                 </td>
                 <td>
+                    <%= diemCN.diemAmNhac %>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h4 class="heading"><b>3. Rèn luyện & nhận xét của giáo viên chủ nhiệm:</b></h4>
+    <div class="bang-diem">
+        <table border="1">
+            <tr bgcolor="#ddd">
+                <th> </th>
+                <th>Học Kỳ 1</th>
+                <th>Học Kỳ 2</th>
+                <th>Cả Năm</th>
+            </tr>
+            <tr>
+                <td style="width:25%">
+                    Điểm Rèn Luyện
+                </td>
+                <td style="width:25%">
+                    <%= diemHK1.diemRenLuyen %>
+                </td>
+                <td style="width:25%">
                     <%= diemHK2.diemRenLuyen %>
+                </td>
+                <td style="width:25%">
+                    <%= diemCN.diemRenLuyen %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nhận Xét Của Giáo Viên
+                </td>
+                <td>
+                    <%= diemHK1.nhanXet %>
                 </td>
                 <td>
                     <%= diemHK2.nhanXet %>
                 </td>
+                <td>
+                    <%= diemCN.nhanXet %>
+                </td>
             </tr>
-
         </table>
     </div>
+    <h4 class="heading"><b>Chú thích: </b><span style="font-weight: normal;">T: Tốt, D: Đạt, K: Không đạt, Y:
+            Yếu.</span></h4>
 </body>
 
 </html>

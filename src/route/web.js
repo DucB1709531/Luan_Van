@@ -4,6 +4,8 @@ import adminController from '../controller/adminController';
 import gVController from '../controller/gVController';
 import pHController from '../controller/pHController';
 import pool from "../config/connectDB";
+
+
 let router = express.Router();
 
 const initWebRoute = (app) => {
@@ -230,9 +232,7 @@ const initWebRoute = (app) => {
     //page giáo viên gửi mail báo cáo sức khỏe tự động cho phụ huynh
     router.get('/giao-vien/:idGV/gui-email-suc-khoe/lop/:idLop', gVController.gvGuiMailSK);
 
-
-
-
+    router.get('/generate-pdf', pHController.xuatDiemRaPDF);
 
     router.get('/about', (req, res) => {
         res.send(`Nguyen Huynh Duc - B1709531`)

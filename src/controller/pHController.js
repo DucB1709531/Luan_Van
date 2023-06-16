@@ -3,6 +3,7 @@ import pool from "../config/connectDB";
 import { json } from "body-parser";
 import nodemailer from 'nodemailer';
 import smtpTransport from 'nodemailer-smtp-transport';
+const puppeteer = require('puppeteer');
 // var XLSX = require('xlsx');
 // const multer = require("multer");
 const Lead = require("../../node_modules/lead");
@@ -19,18 +20,20 @@ let phuHuynhXemThongTinHocSinh = async (req, res) => {
     // console.log(hocsinh[0])
     let hoTenHS = hocsinh[0].hoTen
 
-    let [phuhuynh] = await pool.execute('select hoTenPH from phuhuynh where id = ?', [idPH])
+    let [phuhuynh] = await pool.execute('select * from phuhuynh where id = ?', [idPH])
     // console.log(phuhuynh[0].hoTenPH)
     let hoTenPH = phuhuynh[0].hoTenPH
+    let soDienThoaiPH = phuhuynh[0].soDienThoai
 
     let idLop = hocsinh[0].idLop
     let [lop] = await pool.execute('select * from lophoc where id = ?', [idLop])
     // console.log(lop)
     let tenLop = lop[0].tenLop
 
-    let [giaovien] = await pool.execute('select hoTenGV from giaovien where id = ?', [lop[0].idGV])
+    let [giaovien] = await pool.execute('select * from giaovien where id = ?', [lop[0].idGV])
     // console.log(giaovien[0])
     let hoTenGV = giaovien[0].hoTenGV
+    let soDienThoaiGV = giaovien[0].soDienThoaiGV
 
     let [namhoc] = await pool.execute('select id from namhoc where tinhTrang = 1')
     // console.log(namhoc[0].id)
@@ -73,8 +76,38 @@ let phuHuynhXemThongTinHocSinh = async (req, res) => {
             nhanXet: 'chưa có'
         }
     }
+    let diemCN = {}
+    if (a != '[]' && b != '[]') {
+        diemCN = {
+            diemToan: (diemHK1.diemToan + diemHK2.diemToan * 2) / 3,
+            diemTiengViet: (diemHK1.diemTiengViet + diemHK2.diemTiengViet * 2) / 3,
+            diemDaoDuc: (diemHK1.diemDaoDuc + diemHK2.diemDaoDuc * 2) / 3,
+            diemTNXH: (diemHK1.diemTNXH + diemHK2.diemTNXH * 2) / 3,
+            diemKhoaHoc: (diemHK1.diemKhoaHoc + diemHK2.diemKhoaHoc * 2) / 3,
+            diemLSDL: (diemHK1.diemLSDL + diemHK2.diemLSDL * 2) / 3,
+            diemTheDuc: diemHK2.diemTheDuc,
+            diemAmNhac: diemHK2.diemAmNhac,
+            diemRenLuyen: diemHK2.diemRenLuyen,
+            nhanXet: diemHK2.nhanXet
+        }
+    }
+    else {
+        diemCN = {
+            diemToan: 'chưa có',
+            diemTiengViet: 'chưa có',
+            diemDaoDuc: 'chưa có',
+            diemTNXH: 'chưa có',
+            diemKhoaHoc: 'chưa có',
+            diemLSDL: 'chưa có',
+            diemTheDuc: 'chưa có',
+            diemAmNhac: 'chưa có',
+            diemRenLuyen: 'chưa có',
+            nhanXet: 'chưa có'
+        }
+    }
+    // console.log(diemCN)
     // console.log(diemHK1, diemHK2)
-    return res.render('pHXemDiemHS.ejs', { hoTenHS, hoTenPH, tenLop, hoTenGV, diemHK1, diemHK2 })
+    return res.render('pHXemDiemHS.ejs', { idPH, idHS, hoTenHS, hoTenPH, tenLop, hoTenGV, diemHK1, diemHK2, soDienThoaiPH, soDienThoaiGV, diemCN })
 }
 
 let phuHuynhXemSucKhoeHocSinh = async (req, res) => {
@@ -172,8 +205,12 @@ let PHXemThongBaoLop = async (req, res) => {
     return res.render('phXemTBLop.ejs', { idPH, thongBao: tb, dsHocSinh, hoTenPH, hoTenGV, hoTenHS, tenLop })
 }
 
+let xuatDiemRaPDF = async (req, res) => {
+    console.log(req.query)
+    return res.send('ok')
+}
 
 module.exports = {
     phuHuynhXemThongTinHocSinh,
-    phuHuynhXemSucKhoeHocSinh, PHXemThongBaoLop
+    phuHuynhXemSucKhoeHocSinh, PHXemThongBaoLop, xuatDiemRaPDF
 }
