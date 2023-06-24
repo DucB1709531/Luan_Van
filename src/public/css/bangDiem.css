@@ -16,6 +16,10 @@
     margin-left: 3%;
 }
 
-div.bang-diem table tr {
+div.table-thong-tin table tr {
+    height: 70px
+}
+
+div.table-sk table tr {
     height: 70px
 }

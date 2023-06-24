@@ -3,14 +3,9 @@ import pool from "../config/connectDB";
 import { json } from "body-parser";
 import nodemailer from 'nodemailer';
 import smtpTransport from 'nodemailer-smtp-transport';
-const puppeteer = require('puppeteer');
 // var XLSX = require('xlsx');
 // const multer = require("multer");
-const Lead = require("../../node_modules/lead");
 const path = require('path');
-
-
-
 
 let phuHuynhXemThongTinHocSinh = async (req, res) => {
     // console.log(req.params)

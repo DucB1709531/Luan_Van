@@ -9,22 +9,25 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/carousel.css">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
 </head>
 
 <body>
-    <div class="pannel">
-        <!-- <img class="img-pannel" src="/images/truonghoc.png" alt="pannel"> -->
-    </div>
-
-    <div class="navbar">
-        <a href="/giao-vien/<%= idGV %>">Trang Chủ</a>
-
-        <div class="dropdown">
-            <form id="sm-xem-lop" action="/giao-vien/<%= idGV %>/xem-lop-hoc" method="get">
-                <a href="#" onclick="document.getElementById('sm-xem-lop').submit()">Xem Lớp Chủ Nhiệm</a>
-            </form>
+    <div>
+        <div class="pannel">
+            <!-- <img class="img-pannel" src="/images/truonghoc.png" alt="pannel"> -->
         </div>
-    </div>
+
+        <div class="navbar">
+            <a href="/giao-vien/<%= idGV %>">Trang Chủ</a>
+
+            <div class="dropdown">
+                <form id="sm-xem-lop" action="/giao-vien/<%= idGV %>/xem-lop-hoc" method="get">
+                    <a href="#" onclick="document.getElementById('sm-xem-lop').submit()">Xem Lớp Chủ Nhiệm</a>
+                </form>
+            </div>
+        </div>
 
     </div>
     <div class="carousel">
@@ -140,6 +143,45 @@
         </div>
 
     </div>
+    </div>
+    <div>
+        <footer class="footer">
+            <div class="waves">
+                <div class="wave" id="wave1"></div>
+                <div class="wave" id="wave2"></div>
+                <div class="wave" id="wave3"></div>
+                <div class="wave" id="wave4"></div>
+            </div>
+            <ul class="social-icon">
+                <li class="social-icon__item"><a class="social-icon__link"
+                        href="https://www.facebook.com/profile.php?id=100063999132975">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a></li>
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a></li>
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a></li>
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a></li>
+            </ul>
+            <ul class="menu">
+                <li class="menu__item"><a class="menu__link" href="/">Trang Chủ</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Thông Tin</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Dịch Vụ</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Đội Ngũ</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Liên Hệ</a></li>
+
+            </ul>
+            <p>Sở Giáo Dục Và Đào Tạo Tp Cần Thơ | Trường Tiểu Học Nguyễn Du</p>
+        </footer>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    </div>
+
 </body>
 
 </html>

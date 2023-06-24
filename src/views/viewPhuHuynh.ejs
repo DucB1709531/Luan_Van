@@ -9,51 +9,54 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/carousel.css">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
-    <div class="pannel">
-        <!-- <img class="img-pannel" src="/images/truonghoc.png" alt="pannel"> -->
-    </div>
-
-    <div class="navbar">
-        <a href="/phu-huynh/<%= idPH %>">Trang Chủ</a>
-
-        <div class="dropdown">
-            <button class="dropbtn">Xem Kết Quả Học Tập
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <% for(let i=0; i< dsHocSinh.length; i++){ %>
-                    <a href="/phu-huynh/<%= idPH %>/xem-thong-tin-hoc-sinh/<%= dsHocSinh[i].id %>">Học Sinh: <%=
-                            dsHocSinh[i].hoTen %></a>
-                    <% } %>
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="dropbtn">Xem Báo Cáo Sức Khỏe
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <% for(let i=0; i< dsHocSinh.length; i++){ %>
-                    <a href="/phu-huynh/<%= idPH %>/xem-suc-khoe-hoc-sinh/<%= dsHocSinh[i].id %>">Học Sinh: <%=
-                            dsHocSinh[i].hoTen %></a>
-                    <% } %>
-            </div>
+    <div>
+        <div class="pannel">
+            <!-- <img class="img-pannel" src="/images/truonghoc.png" alt="pannel"> -->
         </div>
 
-        <div class="dropdown">
-            <button class="dropbtn">Xem Thông Báo Lớp
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <% for(let i=0; i< dsHocSinh.length; i++){ %>
-                    <a href="/phu-huynh/<%= idPH %>/xem-thong-bao-lop-cua-hoc-sinh/<%= dsHocSinh[i].id %>">Lớp Của: <%=
-                            dsHocSinh[i].hoTen %></a>
-                    <% } %>
+        <div class="navbar">
+            <a href="/phu-huynh/<%= idPH %>">Trang Chủ</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">Xem Kết Quả Học Tập
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <% for(let i=0; i< dsHocSinh.length; i++){ %>
+                        <a href="/phu-huynh/<%= idPH %>/xem-thong-tin-hoc-sinh/<%= dsHocSinh[i].id %>">Học Sinh: <%=
+                                dsHocSinh[i].hoTen %></a>
+                        <% } %>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Xem Báo Cáo Sức Khỏe
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <% for(let i=0; i< dsHocSinh.length; i++){ %>
+                        <a href="/phu-huynh/<%= idPH %>/xem-suc-khoe-hoc-sinh/<%= dsHocSinh[i].id %>">Học Sinh: <%=
+                                dsHocSinh[i].hoTen %></a>
+                        <% } %>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Xem Thông Báo Lớp
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <% for(let i=0; i< dsHocSinh.length; i++){ %>
+                        <a href="/phu-huynh/<%= idPH %>/xem-thong-bao-lop-cua-hoc-sinh/<%= dsHocSinh[i].id %>">Lớp Của:
+                            <%= dsHocSinh[i].hoTen %>
+                        </a>
+                        <% } %>
+                </div>
             </div>
         </div>
-    </div>
 
     </div>
     <div class="carousel">
@@ -167,6 +170,75 @@
                 <img src="/images/news/news6.png">
             </div>
         </div>
+
+    </div>
+    <div class="chatbot-container">
+        <label for="question">Enter your question:</label>
+        <input type="text" id="question" name="question">
+        <button onclick="getRasaAnswer()">Get Answer</button>
+        <br>
+        <label for="answer">Rasa Answer:</label>
+        <textarea id="answer" name="answer" readonly></textarea>
+    </div>
+
+    <script>
+        function getRasaAnswer() {
+            var question = document.getElementById("question").value;
+            // Make a request to your Rasa API endpoint to get the answer
+            // Replace 'your_rasa_api_endpoint' with the actual URL of your Rasa API endpoint
+            var url = 'your_rasa_api_endpoint?question=' + question;
+
+            // Send a GET request to the Rasa API endpoint
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    // Retrieve the answer from the response
+                    var answer = data.answer;
+
+                    // Display the answer in the 'answer' textarea
+                    document.getElementById("answer").value = answer;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+    </div>
+    <div>
+        <footer class="footer">
+            <div class="waves">
+                <div class="wave" id="wave1"></div>
+                <div class="wave" id="wave2"></div>
+                <div class="wave" id="wave3"></div>
+                <div class="wave" id="wave4"></div>
+            </div>
+            <ul class="social-icon">
+                <li class="social-icon__item"><a class="social-icon__link"
+                        href="https://www.facebook.com/profile.php?id=100063999132975">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a></li>
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a></li>
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a></li>
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a></li>
+            </ul>
+            <ul class="menu">
+                <li class="menu__item"><a class="menu__link" href="/">Trang Chủ</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Thông Tin</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Dịch Vụ</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Đội Ngũ</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">Liên Hệ</a></li>
+
+            </ul>
+            <p>Sở Giáo Dục Và Đào Tạo Tp Cần Thơ | Trường Tiểu Học Nguyễn Du</p>
+        </footer>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     </div>
 </body>
