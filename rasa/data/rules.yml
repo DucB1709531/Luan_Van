@@ -1,0 +1,43 @@
+version: "3.1"
+
+rules:
+
+- rule: nói tạm biệt mỗi khi phụ huynh nói tạm biệt
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: nói "tôi là robot" mỗi khi phụ huynh hỏi đang nói chuyện với ai
+  steps:
+  - intent: talk_to_who
+  - action: utter_iamabot
+
+- rule: nói "đúng vậy, tôi là chat bot" mỗi khi phụ huynh hỏi "có phải chatbot không"
+  steps:
+  - intent: is_bot
+  - action: utter_yesiamabot
+
+- rule: nói cảm ơn mỗi khi được khen
+  steps:
+  - intent: praise
+  - action: utter_happy
+
+- rule: nói "không có chi" khi được cảm ơn
+  steps:
+  - intent: thanks
+  - action: utter_yourrewellcome
+
+- rule: nói xin lỗi mỗi khi bị chê
+  steps:
+  - intent: decry
+  - action: utter_sad
+
+- rule: hướng dẫn phụ huynh xem điểm khi phụ huynh hỏi về điểm số, kết quả học tập
+  steps:
+  - intent: xem_diem
+  - action: utter_diemso
+
+- rule: hướng dẫn phụ huynh xem sức khỏe khi phụ huynh hỏi về sức khỏe
+  steps:
+  - intent: xem_suc_khoe
+  - action: utter_suc_khoe

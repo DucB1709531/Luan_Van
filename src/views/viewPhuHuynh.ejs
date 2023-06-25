@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/carousel.css">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/chatbox.css">
 </head>
 
 <body>
@@ -172,37 +173,56 @@
         </div>
 
     </div>
-    <div class="chatbot-container">
-        <label for="question">Enter your question:</label>
-        <input type="text" id="question" name="question">
-        <button onclick="getRasaAnswer()">Get Answer</button>
-        <br>
-        <label for="answer">Rasa Answer:</label>
-        <textarea id="answer" name="answer" readonly></textarea>
+
+
+    <div class="chat-popup" id="myForm">
+        <form class="form-container" id="chatForm">
+            <h1>Chat Bot Hỗ Trợ</h1>
+            <label for="msg"><b>Nhắn Tin</b></label>
+            <textarea placeholder="Nhập Tin nhắn.." name="msg" id="chatInput" required></textarea>
+            <button type="submit" class="btn" id="sendButton">Gửi</button>
+            <textarea class="chat-output" placeholder="Trả lời" name="output" id="chatOutput" readonly></textarea>
+        </form>
     </div>
 
     <script>
-        function getRasaAnswer() {
-            var question = document.getElementById("question").value;
-            // Make a request to your Rasa API endpoint to get the answer
-            // Replace 'your_rasa_api_endpoint' with the actual URL of your Rasa API endpoint
-            var url = 'your_rasa_api_endpoint?question=' + question;
+        function sendMessage(event) {
+            event.preventDefault(); // Không tải lại trang
 
-            // Send a GET request to the Rasa API endpoint
-            fetch(url)
+            var message = { // lấy nội dung tin nhắn phụ huynh nhập vào
+                message: document.getElementById("chatInput").value
+            };
+            // post nội dung tin nhắn lên rasa (cổng 5005)
+            fetch("http://localhost:5005/webhooks/rest/webhook", {
+                method: "POST",
+                headers: { // set Headers
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(message) // nội dung tin nhắn của phụ huynh
+            })
                 .then(response => response.json())
                 .then(data => {
-                    // Retrieve the answer from the response
-                    var answer = data.answer;
-
-                    // Display the answer in the 'answer' textarea
-                    document.getElementById("answer").value = answer;
+                    document.getElementById("chatOutput").value = data[0].text; // In câu trả lời của bot
+                    document.getElementById("chatInput").value = ""; // Clear chat input 
                 })
                 .catch(error => {
-                    console.error('Error:', error);
+                    // xử lý lỗi
+                    console.error(error);
                 });
         }
+
+        // gọi hàm sendMessage khi nhấn nút submit
+        document.getElementById("chatForm").addEventListener("submit", sendMessage);
     </script>
+
+
+
+
+
+
+    <div class="space">
+
+    </div>
     </div>
     <div>
         <footer class="footer">

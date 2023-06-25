@@ -1,0 +1,39 @@
+version: "3.1"
+
+stories:
+
+- story: greet and praise
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: praise
+  - action: utter_happy
+
+- story: greet and decry
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: decry
+  - action: utter_sad
+
+- story: ask who I am
+  steps:
+  - intent: talk_to_who
+  - action: utter_iamabot
+
+- story: ask if I'm a chatbot
+  steps:
+  - intent: is_bot
+  - action: utter_yesiamabot
+
+- story: goodbye and express thanks
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+  - intent: thanks
+  - action: utter_yourrewellcome
+
+- story: deny and ask again
+  steps:
+  - intent: deny
+  - action: utter_askagain

@@ -24,18 +24,38 @@
             Excel</button>
         <table id="tbl_exporttable_to_xls" border="1">
             <tr bgcolor="#ddd">
-                <th>STT</th>
-                <th>Họ tên</th>
-                <th>Toán</th>
-                <th>Tiếng Việt</th>
-                <th>Đạo Đức</th>
-                <th>Tự Nhiên & Xã Hội</th>
-                <th>Khoa Học</th>
-                <th>Lịch Sử & Địa Lý</th>
-                <th>Thể Dục</th>
-                <th>Âm Nhạc</th>
-                <th>Rèn Luyện</th>
-                <th>Nhận Xét Của Giáo Viên</th>
+                <th rowspan="2">STT</th>
+                <th rowspan="2">Họ tên</th>
+                <th colspan="2">Toán</th>
+                <th colspan="2">Tiếng Việt</th>
+                <th colspan="2">Đạo Đức</th>
+                <th colspan="2">Tự Nhiên & Xã Hội</th>
+                <th colspan="2">Khoa Học</th>
+                <th colspan="2">Lịch Sử & Địa Lý</th>
+                <th colspan="2">Thể Dục</th>
+                <th colspan="2">Âm Nhạc</th>
+                <th colspan="2">Rèn Luyện</th>
+                <th rowspan="2">Nhận Xét Của Giáo Viên</th>
+            </tr>
+            <tr>
+                <th>Điểm</th>
+                <th>Nhận xét</th>
+                <th>Điểm</th>
+                <th>Nhận xét</th>
+                <th>Điểm</th>
+                <th>Nhận xét</th>
+                <th>Điểm</th>
+                <th>Nhận xét</th>
+                <th>Điểm</th>
+                <th>Nhận xét</th>
+                <th>Điểm</th>
+                <th>Nhận xét</th>
+                <th>Điểm</th>
+                <th>Nhận xét</th>
+                <th>Điểm</th>
+                <th>Nhận xét</th>
+                <th>Điểm</th>
+                <th>Nhận xét</th>
             </tr>
             <% for(let i=0; i< danhSachHocSinh.length; i++){ %>
                 <tr>
@@ -49,28 +69,55 @@
                         <%= danhSachDiem[i].diemToan %>
                     </td>
                     <td>
+                        <%= danhSachDiem[i].NXToan %>
+                    </td>
+                    <td>
                         <%= danhSachDiem[i].diemTiengViet %>
+                    </td>
+                    <td>
+                        <%= danhSachDiem[i].NXTiengViet %>
                     </td>
                     <td>
                         <%= danhSachDiem[i].diemDaoDuc %>
                     </td>
                     <td>
+                        <%= danhSachDiem[i].NXDaoDuc %>
+                    </td>
+                    <td>
                         <%= danhSachDiem[i].diemTNXH %>
+                    </td>
+                    <td>
+                        <%= danhSachDiem[i].NXTNXH %>
                     </td>
                     <td>
                         <%= danhSachDiem[i].diemKhoaHoc %>
                     </td>
                     <td>
+                        <%= danhSachDiem[i].NXKhoaHoc %>
+                    </td>
+                    <td>
                         <%= danhSachDiem[i].diemLSDL %>
+                    </td>
+                    <td>
+                        <%= danhSachDiem[i].NXLSDL %>
                     </td>
                     <td>
                         <%= danhSachDiem[i].diemTheDuc %>
                     </td>
                     <td>
+                        <%= danhSachDiem[i].NXTheDuc %>
+                    </td>
+                    <td>
                         <%= danhSachDiem[i].diemAmNhac %>
                     </td>
                     <td>
+                        <%= danhSachDiem[i].NXAmNhac %>
+                    </td>
+                    <td>
                         <%= danhSachDiem[i].diemRenLuyen %>
+                    </td>
+                    <td>
+                        <%= danhSachDiem[i].NXRenLuyen %>
                     </td>
                     <td>
                         <%= danhSachDiem[i].nhanXet %>

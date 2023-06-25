@@ -1,0 +1,188 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - xin chào
+    - alo
+    - ê
+    - hello
+    - chào
+    - bạn ơi cho hỏi
+    - bot ơi cho hỏi
+    - alo có ai không
+    - hi
+    - alo
+    - có ai không
+
+- intent: goodbye
+  examples: |
+    - tạm biệt
+    - bye bye
+    - bye
+    - bai bai
+    - bai
+    - chào tạm biệt
+    - hẹn gặp lại
+    - ok, bye
+    - ok bai
+    - ok bye
+    - ok bye bye
+
+- intent: thanks
+  examples: |
+    - cám ơn
+    - cám ơn nha
+    - cảm ơn
+    - cảm ơn nha
+    - cám ơn nhiều
+    - cảm ơn nhiều
+    - thank you
+    - thanks
+    - cám ơn bot
+    - cảm ơn bot
+
+- intent: deny
+  examples: |
+    - không
+    - sai rồi
+    - hông phải
+    - không phải đâu
+    - không phải
+    - không hẳn
+    - không hẳn vậy
+    - không đúng
+    - sai
+
+- intent: praise
+  examples: |
+    - tuyệt vời
+    - hay quá
+    - hay quá ta
+    - giỏi quá ta
+    - bot giỏi thiệt
+    - bot hay quá
+    - bot giỏi quá
+    - bot được việc quá ta
+    - cám ơn bot nhe
+    - cám ơn nhe
+    - cám ơn nha
+    - cám ơn bot nha
+    - hay
+    - giỏi
+    - tốt
+    - hay quá
+    - giỏi quá
+    - tốt quá
+    - hay đó
+    - giỏi đó 
+
+- intent: decry
+  examples: |
+    - ngu
+    - dở
+    - tệ
+    - bot dở quá
+    - bot ngu quá
+    - bot tệ quá
+    - bot không tốt
+    - bot tệ
+    - bot ngu
+    - bot chán quá
+    - chán
+    - chán quá
+    - chán gì đâu
+
+- intent: talk_to_who
+  examples: |
+    - tui đang nói chuyện với ai vậy?
+    - tôi đang nói chuyện với ai?
+    - tôi đang nói chuyện với đây?
+    - tui đang nói chuyện với ai?
+    - bạn là ai?
+    - cô là ai?
+    - cho hỏi ai đó?
+    - cho hỏi ai đó
+    - tui đang nói chuyện với ai vậy
+    - tôi đang nói chuyện với ai
+    - tôi đang nói chuyện với đây
+    - tui đang nói chuyện với ai
+    - bạn là ai
+    - cô là ai
+
+- intent: is_bot
+  examples: |
+    - bạn có phải bot không?
+    - bạn có phải là chat bot không?
+    - bạn có phải là chatbot không?
+    - bạn có phải chatbot?
+    - có phải chat bot đó không?
+    - có phải chatbot đó không?
+    - có phải tôi đang nói chuyện với chatbot không?
+    - tôi đang nói chuyện với chatbot phải không?
+    - tôi đang nói chuyện với chat bot phải không?
+    - bạn là chat bot à?
+    - bạn là chatbot à?
+    - chat bot đó phải không?
+    - chatbot đó phải không?
+    - đang nói chuyện với chatbot phải không?
+    - bạn có phải bot không
+    - bạn có phải là chat bot không
+    - bạn có phải là chatbot không
+    - bạn có phải chatbot
+    - có phải chat bot đó không
+    - có phải chatbot đó không
+    - có phải tôi đang nói chuyện với chatbot không
+    - tôi đang nói chuyện với chatbot phải không
+    - tôi đang nói chuyện với chat bot phải không
+    - bạn là chat bot à
+    - bạn là chatbot à
+    - chat bot đó phải không
+    - chatbot đó phải không
+    - đang nói chuyện với chatbot phải không
+
+- intent: xem_diem
+  examples: |
+    - làm thế nào để xem điểm?
+    - điểm số của con tôi thế nào?
+    - làm sao để xem điểm của con tôi?
+    - làm sao để xem kết quả học tập của con tôi?
+    - kết quả học tập của con tôi thế nào?
+    - kết quả học tập
+    - điểm số
+    - điểm
+    - điểm học kỳ
+    - điểm cuối kỳ
+    - thông tin điểm
+    - thông tin về điểm số
+    - điểm của con tôi
+    - kết quả học tập của con tôi
+    - xem điểm
+    - xem điểm của con tôi thế nào?
+
+- intent: xem_suc_khoe
+  examples: |
+    - sức khỏe con tôi thế nào?
+    - sức khỏe
+    - thể trạng
+    - tình hình sức khỏe
+    - tình hình sức khỏe con tôi thế nào?
+    - chiều cao
+    - cân nặng
+    - lịch khám sức khỏe
+    - lịch tiêm vắc xin
+    - lịch tiêm vaccine
+    - vắc xin
+    - vaccine
+    - khám sức khỏe
+
+- intent: xem_thong_bao
+  examples: |
+    - thông báo
+    - thông báo lớp
+    - lớp có thông báo gì không?
+    - lớp của con tôi có thông báo gì không?
+    - lớp có thông báo gì mới không?
+    - làm sao để xem thông báo lớp
+    - lớp có thông báo gì mới không
+    - có thông báo gì mới không?

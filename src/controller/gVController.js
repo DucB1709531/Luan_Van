@@ -144,14 +144,23 @@ let giaoVienXemDiemLopHK1 = async (req, res) => {
         if (a == '[]') { // nếu học sinh đó chưa có (chưa nhập) điểm, thì truyền vào chuỗi rỗng.
             dsDiem[i] = {
                 diemToan: '',
+                NXToan: '',
                 diemTiengViet: '',
+                NXTiengViet: '',
                 diemDaoDuc: '',
+                NXDaoDuc: '',
                 diemTNXH: '',
+                NXTNXH: '',
                 diemKhoaHoc: '',
+                NXKhoaHoc: '',
                 diemLSDL: '',
+                NXLSDL: '',
                 diemTheDuc: '',
+                NXTheDuc: '',
                 diemAmNhac: '',
+                NXAmNhac: '',
                 diemRenLuyen: '',
+                NXRenLuyen: '',
                 nhanXet: ''
             }
 
@@ -190,17 +199,25 @@ let giaoVienXemDiemLopHK2 = async (req, res) => {
         if (a == '[]') { // nếu học sinh đó chưa có (chưa nhập) điểm, thì truyền vào chuỗi rỗng.
             dsDiem[i] = {
                 diemToan: '',
+                NXToan: '',
                 diemTiengViet: '',
+                NXTiengViet: '',
                 diemDaoDuc: '',
+                NXDaoDuc: '',
                 diemTNXH: '',
+                NXTNXH: '',
                 diemKhoaHoc: '',
+                NXKhoaHoc: '',
                 diemLSDL: '',
+                NXLSDL: '',
                 diemTheDuc: '',
+                NXTheDuc: '',
                 diemAmNhac: '',
+                NXAmNhac: '',
                 diemRenLuyen: '',
+                NXRenLuyen: '',
                 nhanXet: ''
             }
-
         }
     }
     // giống như phần xem điểm HK1:
@@ -214,6 +231,22 @@ let giaoVienXemDiemLopHK2 = async (req, res) => {
 }
 
 let giaoVienNhapDiemLopHK1 = async (req, res) => {
+    // // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
+    // // 
+    // // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
+    // // Lấy thời gian hiện tại
+    // let currentDate = new Date();
+    // // Đặt thời gian bắt đầu và kết thúc
+    // let startDate = new Date(currentDate.getFullYear(), 8, 5); // Ngày 5 tháng 9
+    // console.log(startDate)
+    // let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
+    // // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
+    // if (currentDate < startDate || currentDate > endDate) {
+    //     // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
+    //     console.log("Lỗi, hết thời gian nhập điểm");
+    //     return res.send("lỗi, đã hết thời gian nhập điểm!");
+    // }
+
     // console.log(req.params)
     let { idGV, idLop } = req.params
     // console.log(idGV, idLop)
@@ -247,20 +280,39 @@ let postgiaoVienNhapDiemLopHK1 = async (req, res) => {
     let idNamHoc = namhoc[0].id
     let idHK = 1
     for (let i = 0; i < hocsinh.length; i++) {
+        // xem học sinh hiện tại đã có điểm trong học kỳ và năm hiện tại đang nhập không, nếu đã có rồi thì không nhập nữa
+        let [diemcu] = await pool.execute('select * from diem where idHS = ? AND idHK = ? AND idNamHoc = ?',
+            [hocsinh[i].id, idHK, idNamHoc]) // tìm idHS, idNamHoc, idHK hiện tại trong bảng "diem"
+        // console.log(diemcu[0])
+        let stringa = JSON.stringify(diemcu)
+        if (stringa != '[]') { // nếu có rồi thì bỏ qua học sinh này
+            console.log('học sinh có id: ' + diemcu[0].idHS + ' đã có điểm trong CSDL!')
+            continue
+        }
+
         let diemToan = eval('req.body.diemToan' + hocsinh[i].id)
+        let NXToan = eval('req.body.NXToan' + hocsinh[i].id)
         let diemTiengViet = eval('req.body.diemTiengViet' + hocsinh[i].id)
+        let NXTiengViet = eval('req.body.NXToan' + hocsinh[i].id)
         let diemDaoDuc = eval('req.body.diemDaoDuc' + hocsinh[i].id)
+        let NXDaoDuc = eval('req.body.NXToan' + hocsinh[i].id)
         let diemTNXH = eval('req.body.diemTNXH' + hocsinh[i].id)
+        let NXTNXH = eval('req.body.NXToan' + hocsinh[i].id)
         let diemKhoaHoc = eval('req.body.diemKhoaHoc' + hocsinh[i].id)
+        let NXKhoaHoc = eval('req.body.NXToan' + hocsinh[i].id)
         let diemLSDL = eval('req.body.diemLSDL' + hocsinh[i].id)
+        let NXLSDL = eval('req.body.NXToan' + hocsinh[i].id)
         let diemTheDuc = eval('req.body.diemTheDuc' + hocsinh[i].id)
+        let NXTheDuc = eval('req.body.NXToan' + hocsinh[i].id)
         let diemAmNhac = eval('req.body.diemAmNhac' + hocsinh[i].id)
+        let NXAmNhac = eval('req.body.NXToan' + hocsinh[i].id)
         let diemRenLuyen = eval('req.body.diemRenLuyen' + hocsinh[i].id)
+        let NXRenLuyen = eval('req.body.NXToan' + hocsinh[i].id)
         let nhanXet = eval('req.body.nhanXet' + hocsinh[i].id)
-        // console.log(idNamHoc)
+        // console.log(NXToan, NXTiengViet, NXDaoDuc, NXTNXH, NXKhoaHoc, NXLSDL, NXTheDuc, NXAmNhac, NXRenLuyen)
         // console.log(diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac)
-        await pool.execute('insert into diem(idHS, idHK, idNamHoc, diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac, diemRenLuyen, nhanXet) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [hocsinh[i].id, idHK, idNamHoc, diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac, diemRenLuyen, nhanXet])
+        await pool.execute('insert into diem(idHS, idHK, idNamHoc, diemToan,NXToan, diemTiengViet,NXTiengViet, diemDaoDuc,NXDaoDuc, diemTNXH,NXTNXH, diemKhoaHoc,NXKhoaHoc, diemLSDL,NXLSDL, diemTheDuc,NXTheDuc, diemAmNhac,NXAmNhac, diemRenLuyen,NXRenLuyen, nhanXet) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            [hocsinh[i].id, idHK, idNamHoc, diemToan, NXToan, diemTiengViet, NXTiengViet, diemDaoDuc, NXDaoDuc, diemTNXH, NXTNXH, diemKhoaHoc, NXKhoaHoc, diemLSDL, NXLSDL, diemTheDuc, NXTheDuc, diemAmNhac, NXAmNhac, diemRenLuyen, NXRenLuyen, nhanXet])
     }
     let a = '/giao-vien/' + idGV + '/xem-lop-hoc'
     // console.log(a)
@@ -268,6 +320,21 @@ let postgiaoVienNhapDiemLopHK1 = async (req, res) => {
 }
 
 let giaoVienNhapDiemLopHK2 = async (req, res) => {
+    // // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
+    // // 
+    // // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
+    // // Lấy thời gian hiện tại
+    // let currentDate = new Date();
+    // // Đặt thời gian bắt đầu và kết thúc
+    // let startDate = new Date(currentDate.getFullYear(), 0, 22); // Ngày 22 tháng 1
+    // let endDate = new Date(currentDate.getFullYear(), 4, 31); // Ngày 31 tháng 5
+    // // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
+    // if (currentDate < startDate || currentDate > endDate) {
+    //     // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
+    //     console.log("Lỗi, hết thời gian nhập điểm");
+    //     return res.send("lỗi, đã hết thời gian nhập điểm!");
+    // }
+
     // console.log(req.params)
     let { idGV, idLop } = req.params
     // console.log(idGV, idLop)
@@ -300,20 +367,38 @@ let postgiaoVienNhapDiemLopHK2 = async (req, res) => {
     let idNamHoc = namhoc[0].id
     let idHK = 2
     for (let i = 0; i < hocsinh.length; i++) {
+        // xem học sinh hiện tại đã có điểm trong học kỳ và năm hiện tại đang nhập không, nếu đã có rồi thì không nhập nữa
+        let [diemcu] = await pool.execute('select * from diem where idHS = ? AND idHK = ? AND idNamHoc = ?',
+            [hocsinh[i].id, idHK, idNamHoc]) // tìm idHS, idNamHoc, idHK hiện tại trong bảng "diem"
+        // console.log(diemcu[0])
+        let stringa = JSON.stringify(diemcu)
+        if (stringa != '[]') { // nếu có rồi thì bỏ qua học sinh này
+            console.log('học sinh có id: ' + diemcu[0].idHS + ' đã có điểm trong CSDL!')
+            continue
+        }
         let diemToan = eval('req.body.diemToan' + hocsinh[i].id)
+        let NXToan = eval('req.body.NXToan' + hocsinh[i].id)
         let diemTiengViet = eval('req.body.diemTiengViet' + hocsinh[i].id)
+        let NXTiengViet = eval('req.body.NXToan' + hocsinh[i].id)
         let diemDaoDuc = eval('req.body.diemDaoDuc' + hocsinh[i].id)
+        let NXDaoDuc = eval('req.body.NXToan' + hocsinh[i].id)
         let diemTNXH = eval('req.body.diemTNXH' + hocsinh[i].id)
+        let NXTNXH = eval('req.body.NXToan' + hocsinh[i].id)
         let diemKhoaHoc = eval('req.body.diemKhoaHoc' + hocsinh[i].id)
+        let NXKhoaHoc = eval('req.body.NXToan' + hocsinh[i].id)
         let diemLSDL = eval('req.body.diemLSDL' + hocsinh[i].id)
+        let NXLSDL = eval('req.body.NXToan' + hocsinh[i].id)
         let diemTheDuc = eval('req.body.diemTheDuc' + hocsinh[i].id)
+        let NXTheDuc = eval('req.body.NXToan' + hocsinh[i].id)
         let diemAmNhac = eval('req.body.diemAmNhac' + hocsinh[i].id)
+        let NXAmNhac = eval('req.body.NXToan' + hocsinh[i].id)
         let diemRenLuyen = eval('req.body.diemRenLuyen' + hocsinh[i].id)
+        let NXRenLuyen = eval('req.body.NXToan' + hocsinh[i].id)
         let nhanXet = eval('req.body.nhanXet' + hocsinh[i].id)
         // console.log(idNamHoc)
         // console.log(diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac)
-        await pool.execute('insert into diem(idHS, idHK, idNamHoc, diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac, diemRenLuyen, nhanXet) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [hocsinh[i].id, idHK, idNamHoc, diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac, diemRenLuyen, nhanXet])
+        await pool.execute('insert into diem(idHS, idHK, idNamHoc, diemToan,NXToan, diemTiengViet,NXTiengViet, diemDaoDuc,NXDaoDuc, diemTNXH,NXTNXH, diemKhoaHoc,NXKhoaHoc, diemLSDL,NXLSDL, diemTheDuc,NXTheDuc, diemAmNhac,NXAmNhac, diemRenLuyen,NXRenLuyen, nhanXet) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            [hocsinh[i].id, idHK, idNamHoc, diemToan, NXToan, diemTiengViet, NXTiengViet, diemDaoDuc, NXDaoDuc, diemTNXH, NXTNXH, diemKhoaHoc, NXKhoaHoc, diemLSDL, NXLSDL, diemTheDuc, NXTheDuc, diemAmNhac, NXAmNhac, diemRenLuyen, NXRenLuyen, nhanXet])
     }
     let a = '/giao-vien/' + idGV + '/xem-lop-hoc'
     // console.log(a)
@@ -574,24 +659,47 @@ let postgvNhapDiemTuFile = async (req, res) => {
     // console.log(xlData[0]); //dòng thứ nhất
     // let hs = Object.values(JSON.parse(JSON.stringify(xlData[0])))
     // console.log(hs)
-    for (let i = 0; i < xlData.length; i++) { // duyệt qua từng dòng của sheet
+    for (let i = 1; i < xlData.length; i++) { // duyệt qua từng dòng của sheet
         let hocsinh = Object.values(JSON.parse(JSON.stringify(xlData[i]))) // chuyển từng đứa học sinh về mảng để đọc
         // console.log(hocsinh)
         let idHS = hocsinh[1]
         // let hoTen = hocsinh[2]
         let diemToan = hocsinh[3]
-        let diemTiengViet = hocsinh[4]
-        let diemDaoDuc = hocsinh[5]
-        let diemTNXH = hocsinh[6]
-        let diemKhoaHoc = hocsinh[7]
-        let diemLSDL = hocsinh[8]
-        let diemTheDuc = hocsinh[9]
-        let diemAmNhac = hocsinh[10]
-        let diemRenLuyen = hocsinh[11]
-        let nhanXet = hocsinh[12]
+        let NXToan = hocsinh[4]
+        let diemTiengViet = hocsinh[5]
+        let NXTiengViet = hocsinh[6]
+        let diemDaoDuc = hocsinh[7]
+        let NXDaoDuc = hocsinh[8]
+        let diemTNXH = hocsinh[9]
+        let NXTNXH = hocsinh[10]
+        let diemKhoaHoc = hocsinh[11]
+        let NXKhoaHoc = hocsinh[12]
+        let diemLSDL = hocsinh[13]
+        let NXLSDL = hocsinh[14]
+        let diemTheDuc = hocsinh[15]
+        let NXTheDuc = hocsinh[16]
+        let diemAmNhac = hocsinh[17]
+        let NXAmNhac = hocsinh[18]
+        let diemRenLuyen = hocsinh[19]
+        let NXRenLuyen = hocsinh[20]
+        let nhanXet = hocsinh[21]
+
+        // xem học sinh hiện tại đã có điểm trong học kỳ và năm hiện tại đang nhập không, nếu đã có rồi thì không nhập nữa
+        let [diemcu] = await pool.execute('select * from diem where idHS = ? AND idHK = ? AND idNamHoc = ?',
+            [idHS, idHK, idNamHoc]) // tìm idHS, idNamHoc, idHK hiện tại trong bảng "diem"
+        // console.log(diemcu[0])
+        let stringa = JSON.stringify(diemcu)
+        if (stringa != '[]') { // nếu có rồi thì bỏ qua học sinh này
+            console.log('học sinh có id: ' + diemcu[0].idHS + ' đã có điểm trong CSDL!')
+            continue
+        }
+
         // console.log(idHS, diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac, nhanXet)
-        await pool.execute('insert into diem(idHS, idHK, idNamHoc, diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac, diemRenLuyen, nhanXet) values(?,?,?,?,?,?,?,?,?,?,?,?,?)',
-            [idHS, idHK, idNamHoc, diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac, diemRenLuyen, nhanXet])
+        // console.log(NXToan, NXTiengViet, NXDaoDuc, NXTNXH, NXKhoaHoc, NXLSDL, NXTheDuc, NXAmNhac, NXRenLuyen)
+
+        // nếu chưa có thì nhập điểm của học sisnh vào CSDL
+        await pool.execute('insert into diem(idHS, idHK, idNamHoc, diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac, diemRenLuyen, nhanXet, NXToan, NXTiengViet, NXDaoDuc, NXTNXH, NXKhoaHoc, NXLSDL, NXTheDuc, NXAmNhac, NXRenLuyen) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+            [idHS, idHK, idNamHoc, diemToan, diemTiengViet, diemDaoDuc, diemTNXH, diemKhoaHoc, diemLSDL, diemTheDuc, diemAmNhac, diemRenLuyen, nhanXet, NXToan, NXTiengViet, NXDaoDuc, NXTNXH, NXKhoaHoc, NXLSDL, NXTheDuc, NXAmNhac, NXRenLuyen])
     }
     // return về view của giáo viên
     return res.redirect('/giao-vien/' + idGV + '/xem-lop-hoc')
@@ -788,6 +896,8 @@ let gvGuiMail = async (req, res) => {
     return res.send('da gui email thanh cong!')
 
 }
+
+
 
 module.exports = {
     giaoVienGetUpdateGiaoVienPage,

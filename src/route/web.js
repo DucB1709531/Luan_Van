@@ -3,7 +3,9 @@ import homeController from '../controller/homeController';
 import adminController from '../controller/adminController';
 import gVController from '../controller/gVController';
 import pHController from '../controller/pHController';
+import apiController from '../controller/apiController';
 import pool from "../config/connectDB";
+
 
 
 let router = express.Router();

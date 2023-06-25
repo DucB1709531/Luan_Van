@@ -1,0 +1,64 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - thanks
+  - praise
+  - deny
+  - decry
+  - talk_to_who
+  - is_bot
+  - xem_diem
+  - xem_suc_khoe
+  - xem_thong_bao
+
+responses:
+  utter_greet:
+  - text: "xin chào, tôi có thể giúp gì cho quý phụ huynh không ạ?"
+  - text: "Xin chào Quý phụ huynh, tôi có thể giúp gì không?"
+
+  utter_goodbye:
+  - text: "Chào tạm biệt và hẹn gặp lại quý phụ huynh!"
+  - text: "Hẹn gặp lại quý phụ huynh!"
+
+  utter_yourrewellcome:
+  - text: "Không có chi, rất vui vì đã giúp đỡ được quý phụ huynh!"
+  - text: "Không có gì, rất hân hạnh vì đã giúp được quý phụ huynh!"
+
+  utter_happy:
+  - text: "Cảm ơn quý phụ huynh rất nhiều!"
+  - text: "Quý phụ huynh quá khen, cảm ơn rất nhiều"
+
+  utter_askagain:
+  - text: "Quý phụ huynh vui lòng nói rõ hơn được không ạ?"
+  - text: "Nếu vậy, quý phụ huynh có thể nói rỗ lại được không?"
+
+  utter_sad:
+  - text: "Xin lỗi quý phụ huynh về trải nghiệm không tốt này, chúng tôi sẽ tiếp tục cải thiện hệ thống để trải nghiệm sau này của quý phụ huynh được tốt hơn."
+  - text: "Rất xin lỗi quý phụ huynh, chúng tôi sẽ tiếp tục cải tiến hệ thống để trải nghiệm của quý phụ huynh được tốt hơn."
+
+  utter_iamabot:
+  - text: "Tôi là chat bot hỗ trợ, được tạo ra để trả lời những câu hỏi của quý phụ huynh."
+  - text: "Tôi là chat bot hỗ trợ do nhà trường tạo ra nhằm trả lời những câu hỏi thường gặp của quý phụ huynh."
+
+  utter_yesiamabot:
+  - text: "Đúng vậy, tôi là chat bot hỗ trợ, được tạo ra để trả lời những câu hỏi của quý phụ huynh."
+  - text: "Đúng vậy, Tôi là chat bot hỗ trợ do nhà trường tạo ra nhằm trả lời những câu hỏi thường gặp của quý phụ huynh."
+
+
+  utter_diemso:
+  - text: "Để xem kết quả học tập của học sinh, quý phụ huynh vui lòng đăng nhập vào hệ thống bằng tài khoản do nhà trường cung cấp, sau đó chọn phần <Xem Kết Quả Học Tập>"
+
+  utter_suc_khoe:
+  - text: "Để xem báo cáo sức khỏe của học sinh, quý phụ huynh vui lòng đăng nhập vào hệ thống bằng tài khoản do nhà trường cung cấp, sau đó chọn phần <Xem báo Cáo Sức Khỏe>"
+
+  utter_thong_bao:
+  - text: "Để xem thông báo lớp học sinh, quý phụ huynh vui lòng đăng nhập vào hệ thống bằng tài khoản do nhà trường cung cấp, sau đó chọn phần <Xem Thông Báo Lớp"
+
+  utter_fallback:
+  - text: "Xin lỗi, tôi chưa hiểu ý của quý phụ huynh, quý phụ huynh vui lòng nói rõ hơn được không ạ?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -63,11 +63,20 @@
     <div class="bang-diem">
         <table border="1">
             <tr bgcolor="#ddd">
-                <th>STT</th>
-                <th>Môn Học</th>
-                <th>Điểm Học Kỳ 1</th>
-                <th>Điểm Học Kỳ 2</th>
-                <th>Điểm Trung Bình Cả Năm</th>
+                <th rowspan="2">STT</th>
+                <th rowspan="2">Môn Học</th>
+                <th colspan="2">Học Kỳ 1</th>
+                <th colspan="2">Học Kỳ 2</th>
+                <th colspan="2">Trung Bình Cuối Năm</th>
+            </tr>
+            <tr>
+
+                <th>Điểm</th>
+                <th>Nhận Xét</th>
+                <th>Điểm</th>
+                <th>Nhận Xét</th>
+                <th>Điểm</th>
+                <th>Nhận Xét</th>
             </tr>
             <tr>
                 <td>1</td>
@@ -76,10 +85,19 @@
                     <%= diemHK1.diemToan %>
                 </td>
                 <td>
+                    <%= diemHK1.NXToan %>
+                </td>
+                <td>
                     <%= diemHK2.diemToan %>
                 </td>
                 <td>
+                    <%= diemHK2.NXToan %>
+                </td>
+                <td>
                     <%= diemCN.diemToan %>
+                </td>
+                <td>
+                    <%= diemHK2.NXToan %>
                 </td>
             </tr>
             <tr>
@@ -89,10 +107,19 @@
                     <%= diemHK1.diemTiengViet %>
                 </td>
                 <td>
+                    <%= diemHK1.NXTiengViet %>
+                </td>
+                <td>
                     <%= diemHK2.diemTiengViet %>
                 </td>
                 <td>
+                    <%= diemHK2.NXTiengViet %>
+                </td>
+                <td>
                     <%= diemCN.diemTiengViet %>
+                </td>
+                <td>
+                    <%= diemHK2.NXTiengViet %>
                 </td>
             </tr>
             <tr>
@@ -102,10 +129,19 @@
                     <%= diemHK1.diemDaoDuc %>
                 </td>
                 <td>
+                    <%= diemHK1.NXDaoDuc %>
+                </td>
+                <td>
                     <%= diemHK2.diemDaoDuc %>
                 </td>
                 <td>
-                    <%= diemCN.diemDaoDuc %>
+                    <%= diemHK2.NXDaoDuc %>
+                </td>
+                <td>
+                    <%= diemHK2.diemDaoDuc %>
+                </td>
+                <td>
+                    <%= diemHK2.NXDaoDuc %>
                 </td>
             </tr>
             <tr>
@@ -115,10 +151,19 @@
                     <%= diemHK1.diemTNXH %>
                 </td>
                 <td>
+                    <%= diemHK1.NXTNXH %>
+                </td>
+                <td>
                     <%= diemHK2.diemTNXH %>
                 </td>
                 <td>
-                    <%= diemCN.diemTNXH %>
+                    <%= diemHK2.NXTNXH %>
+                </td>
+                <td>
+                    <%= diemHK2.diemTNXH %>
+                </td>
+                <td>
+                    <%= diemHK2.NXTNXH %>
                 </td>
             </tr>
             <tr>
@@ -128,10 +173,19 @@
                     <%= diemHK1.diemKhoaHoc %>
                 </td>
                 <td>
+                    <%= diemHK1.NXKhoaHoc %>
+                </td>
+                <td>
                     <%= diemHK2.diemKhoaHoc %>
                 </td>
                 <td>
-                    <%= diemCN.diemKhoaHoc %>
+                    <%= diemHK2.NXKhoaHoc %>
+                </td>
+                <td>
+                    <%= diemHK2.diemKhoaHoc %>
+                </td>
+                <td>
+                    <%= diemHK2.NXKhoaHoc %>
                 </td>
             </tr>
             <tr>
@@ -141,10 +195,19 @@
                     <%= diemHK1.diemLSDL %>
                 </td>
                 <td>
+                    <%= diemHK1.NXLSDL %>
+                </td>
+                <td>
                     <%= diemHK2.diemLSDL %>
                 </td>
                 <td>
-                    <%= diemCN.diemLSDL %>
+                    <%= diemHK2.NXLSDL %>
+                </td>
+                <td>
+                    <%= diemHK2.diemLSDL %>
+                </td>
+                <td>
+                    <%= diemHK2.NXLSDL %>
                 </td>
             </tr>
             <tr>
@@ -154,10 +217,19 @@
                     <%= diemHK1.diemTheDuc %>
                 </td>
                 <td>
+                    <%= diemHK1.NXTheDuc %>
+                </td>
+                <td>
                     <%= diemHK2.diemTheDuc %>
                 </td>
                 <td>
-                    <%= diemCN.diemTheDuc %>
+                    <%= diemHK2.NXTheDuc %>
+                </td>
+                <td>
+                    <%= diemHK2.diemTheDuc %>
+                </td>
+                <td>
+                    <%= diemHK2.NXTheDuc %>
                 </td>
             </tr>
             <tr>
@@ -167,10 +239,19 @@
                     <%= diemHK1.diemAmNhac %>
                 </td>
                 <td>
+                    <%= diemHK1.NXAmNhac %>
+                </td>
+                <td>
                     <%= diemHK2.diemAmNhac %>
                 </td>
                 <td>
-                    <%= diemCN.diemAmNhac %>
+                    <%= diemHK2.NXAmNhac %>
+                </td>
+                <td>
+                    <%= diemHK2.diemAmNhac %>
+                </td>
+                <td>
+                    <%= diemHK2.NXAmNhac %>
                 </td>
             </tr>
         </table>
@@ -195,7 +276,7 @@
                     <%= diemHK2.diemRenLuyen %>
                 </td>
                 <td style="width:25%">
-                    <%= diemCN.diemRenLuyen %>
+                    <%= diemHK2.diemRenLuyen %>
                 </td>
             </tr>
             <tr>
@@ -209,7 +290,7 @@
                     <%= diemHK2.nhanXet %>
                 </td>
                 <td>
-                    <%= diemCN.nhanXet %>
+                    <%= diemHK2.nhanXet %>
                 </td>
             </tr>
         </table>

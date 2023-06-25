@@ -3,12 +3,15 @@ import pool from "../config/connectDB";
 import { json } from "body-parser";
 import nodemailer from 'nodemailer';
 import smtpTransport from 'nodemailer-smtp-transport';
+import axios from 'axios';
 // var XLSX = require('xlsx');
 // const multer = require("multer");
 const Lead = require("../../node_modules/lead");
 const path = require('path');
 
-
+let getChatPage = async (req, res) => {
+    return res.render('chat.ejs')
+}
 
 // home page
 let getHomepage = async (req, res) => {
@@ -138,8 +141,7 @@ let getViewPhuHuynh = async (req, res) => {
 
 
 
-
 module.exports = {
     getHomepage, getViewAdmin, dangNhap, getDangNhapPage, getViewGiaoVien,
-    getViewPhuHuynh
+    getViewPhuHuynh, getChatPage
 }

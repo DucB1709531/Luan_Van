@@ -2,6 +2,8 @@ import express from 'express';
 import configViewEngine from './config/viewEngine';
 import initWebRoute from './route/web';
 import initAPIRoute from './route/api';
+import axios from 'axios';
+
 // import connection from './config/connectDB';
 
 

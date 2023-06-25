@@ -41,14 +41,23 @@ let phuHuynhXemThongTinHocSinh = async (req, res) => {
     if (a == '[]') {
         diemHK1 = {
             diemToan: 'chưa có',
+            NXToan: 'chưa có',
             diemTiengViet: 'chưa có',
+            NXTiengViet: 'chưa có',
             diemDaoDuc: 'chưa có',
+            NXDaoDuc: 'chưa có',
             diemTNXH: 'chưa có',
+            NXTNXH: 'chưa có',
             diemKhoaHoc: 'chưa có',
+            NXKhoaHoc: 'chưa có',
             diemLSDL: 'chưa có',
+            NXLSDL: 'chưa có',
             diemTheDuc: 'chưa có',
+            NXTheDuc: 'chưa có',
             diemAmNhac: 'chưa có',
+            NXAmNhac: 'chưa có',
             diemRenLuyen: 'chưa có',
+            NXRenLuyen: 'chưa có',
             nhanXet: 'chưa có'
         }
     }
@@ -60,14 +69,23 @@ let phuHuynhXemThongTinHocSinh = async (req, res) => {
     if (b == '[]') {
         diemHK2 = {
             diemToan: 'chưa có',
+            NXToan: 'chưa có',
             diemTiengViet: 'chưa có',
+            NXTiengViet: 'chưa có',
             diemDaoDuc: 'chưa có',
+            NXDaoDuc: 'chưa có',
             diemTNXH: 'chưa có',
+            NXTNXH: 'chưa có',
             diemKhoaHoc: 'chưa có',
+            NXKhoaHoc: 'chưa có',
             diemLSDL: 'chưa có',
+            NXLSDL: 'chưa có',
             diemTheDuc: 'chưa có',
+            NXTheDuc: 'chưa có',
             diemAmNhac: 'chưa có',
+            NXAmNhac: 'chưa có',
             diemRenLuyen: 'chưa có',
+            NXRenLuyen: 'chưa có',
             nhanXet: 'chưa có'
         }
     }
@@ -75,15 +93,7 @@ let phuHuynhXemThongTinHocSinh = async (req, res) => {
     if (a != '[]' && b != '[]') {
         diemCN = {
             diemToan: (diemHK1.diemToan + diemHK2.diemToan * 2) / 3,
-            diemTiengViet: (diemHK1.diemTiengViet + diemHK2.diemTiengViet * 2) / 3,
-            diemDaoDuc: (diemHK1.diemDaoDuc + diemHK2.diemDaoDuc * 2) / 3,
-            diemTNXH: (diemHK1.diemTNXH + diemHK2.diemTNXH * 2) / 3,
-            diemKhoaHoc: (diemHK1.diemKhoaHoc + diemHK2.diemKhoaHoc * 2) / 3,
-            diemLSDL: (diemHK1.diemLSDL + diemHK2.diemLSDL * 2) / 3,
-            diemTheDuc: diemHK2.diemTheDuc,
-            diemAmNhac: diemHK2.diemAmNhac,
-            diemRenLuyen: diemHK2.diemRenLuyen,
-            nhanXet: diemHK2.nhanXet
+            diemTiengViet: (diemHK1.diemTiengViet + diemHK2.diemTiengViet * 2) / 3
         }
     }
     else {
