@@ -1,0 +1,201 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa Điểm Học Kỳ 1</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bangDiem.css">
+    <style>
+        .nhan-xet-input {
+            width: 80%;
+            /* chỉnh sử độ rộng bảng */
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <h1 class="title-ds-hs"><b>Sửa Điểm Học Kỳ 1</b></h1>
+    <h1 class="title-ds-hs"><b>Lớp <%= tenLopHoc %></b></h1>
+    <h2 class="title-ds-hs"><b>Giáo Viên: <%= hoTenGV %></b></h2>
+    <h3 class="title-ds-hs"><b>Sỉ Số: <%= siSo %></b></h3>
+
+    <form action="/giao-vien/<%= idGV %>/sua-diem/hoc-ky-1/<%= idLop %>/post" method="post">
+        <input type="text" name="idLop" value="<%= idLop %>" hidden>
+        <input type="text" name="idGV" value="<%= idGV %>" hidden>
+        <div class="bang-diem">
+            <table border="1">
+                <tr bgcolor="#ddd">
+                    <th>Số Thứ Tự</th>
+                    <th>Mã Số Học Sinh</th>
+                    <th>Họ tên</th>
+                    <th colspan="2">Toán</th>
+                    <th colspan="2">Tiếng Việt</th>
+                    <th colspan="2">Đạo Đức</th>
+                    <th colspan="2">Tự Nhiên & Xã Hội</th>
+                    <th colspan="2">Khoa Học</th>
+                    <th colspan="2">Lịch Sử & Địa Lý</th>
+                    <th colspan="2">Thể Dục</th>
+                    <th colspan="2">Âm Nhạc</th>
+                    <th colspan="2">Rèn Luyện</th>
+                    <th>Nhận Xét Của Giáo Viên</th>
+                </tr>
+                <tr bgcolor="#ddd">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Điểm</th>
+                    <th>Nhận Xét</th>
+                    <th>Điểm</th>
+                    <th>Nhận Xét</th>
+                    <th>Điểm</th>
+                    <th>Nhận Xét</th>
+                    <th>Điểm</th>
+                    <th>Nhận Xét</th>
+                    <th>Điểm</th>
+                    <th>Nhận Xét</th>
+                    <th>Điểm</th>
+                    <th>Nhận Xét</th>
+                    <th>Điểm</th>
+                    <th>Nhận Xét</th>
+                    <th>Điểm</th>
+                    <th>Nhận Xét</th>
+                    <th>Điểm</th>
+                    <th>Nhận Xét</th>
+                    <th></th>
+                </tr>
+                <% let a=[]%>
+                    <% for(let i=0; i< dataHocSinh.length; i++){ %>
+
+                        <tr>
+                            <td>
+                                <%= i+1 %>
+                            </td>
+                            <td>
+                                <%= dataHocSinh[i].id %>
+                            </td>
+                            <td>
+                                <%= dataHocSinh[i].hoTen %>
+                            </td>
+                            <td>
+                                <input type="number" name="diemToan<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].diemToan %>" required min="0" max="10">
+                            </td>
+                            <td>
+                                <input class="nhan-xet-input" type="text" name="NXToan<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].NXToan %>" required>
+                            </td>
+                            <td>
+                                <input type="number" name="diemTiengViet<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].diemTiengViet %>" required min="0" max="10">
+                            </td>
+                            <td>
+                                <input class="nhan-xet-input" type="text" name="NXTiengViet<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].NXTiengViet %>" required>
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemDaoDuc<%= dataHocSinh[i].id %>">
+                                        <option value="T">T</option>
+                                        <option value="D">D</option>
+                                        <option value="K">K</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="nhan-xet-input" type="text" name="NXDaoDuc<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].NXDaoDuc %>" required>
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemTNXH<%= dataHocSinh[i].id %>">
+                                        <option value="T">T</option>
+                                        <option value="D">D</option>
+                                        <option value="K">K</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="nhan-xet-input" type="text" name="NXTNXH<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].NXTNXH %>" required>
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemKhoaHoc<%= dataHocSinh[i].id %>">
+                                        <option value="T">T</option>
+                                        <option value="D">D</option>
+                                        <option value="K">K</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="nhan-xet-input" type="text" name="NXKhoaHoc<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].NXKhoaHoc %>" required>
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemLSDL<%= dataHocSinh[i].id %>">
+                                        <option value="T">T</option>
+                                        <option value="D">D</option>
+                                        <option value="K">K</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="nhan-xet-input" type="text" name="NXLSDL<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].NXLSDL %>" required>
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemTheDuc<%= dataHocSinh[i].id %>">
+                                        <option value="T">T</option>
+                                        <option value="D">D</option>
+                                        <option value="K">K</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="nhan-xet-input" type="text" name="NXTheDuc<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].NXTheDuc %>" required>
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemAmNhac<%= dataHocSinh[i].id %>">
+                                        <option value="T">T</option>
+                                        <option value="D">D</option>
+                                        <option value="K">K</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="nhan-xet-input" type="text" name="NXAmNhac<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].NXAmNhac %>" required>
+                            </td>
+                            <td>
+                                <div>
+                                    <select name="diemRenLuyen<%= dataHocSinh[i].id %>">
+                                        <option value="T">T</option>
+                                        <option value="D">D</option>
+                                        <option value="K">K</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="nhan-xet-input" type="text" name="NXRenLuyen<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].NXRenLuyen %>" required>
+                            </td>
+                            <td>
+                                <input type="text" name="nhanXet<%= dataHocSinh[i].id %>"
+                                    value="<%= dsDiem[i].nhanXet %>">
+                            </td>
+                        </tr>
+                        <% } %>
+            </table>
+        </div>
+        <button class="btn-submit-nhap-diem" type="submit">Cập Nhật Điểm</button>
+    </form>
+</body>
+
+</html>

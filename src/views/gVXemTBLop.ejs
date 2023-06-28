@@ -47,6 +47,19 @@
                 </form>
             </div>
         </div>
+        <div class="dropdown">
+            <button class="dropbtn">Sửa Điểm
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <form id="sua-diem-hk1" action="/giao-vien/<%= idGV %>/sua-diem/hoc-ky-1/<%= idLop %>" method="GET">
+                    <a href="#" onclick="document.getElementById('sua-diem-hk1').submit()">Sửa Điểm Học Kỳ 1</a>
+                </form>
+                <form id="sua-diem-hk2" action="/giao-vien/<%= idGV %>/sua-diem/hoc-ky-2/<%= idLop %>" method="GET">
+                    <a href="#" onclick="document.getElementById('sua-diem-hk2').submit()">Sửa Điểm Học Kỳ 2</a>
+                </form>
+            </div>
+        </div>
 
         <div class="dropdown">
             <button class="dropbtn">Sức Khỏe

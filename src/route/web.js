@@ -204,6 +204,18 @@ const initWebRoute = (app) => {
     //get page giáo viên nhập điểm bằng file:
     router.get('/giao-vien/:idGV/nhap-diem-tu-file/hoc-ky-:idHK/:idLop', gVController.gvNhapDiemTuFile);
 
+    // get page giáo viên sửa điểm (HK1)
+    router.get('/giao-vien/:idGV/sua-diem/hoc-ky-1/:idLop', gVController.gvSuaDiemHK1);
+
+    //post sửa điểm lên CSDL
+    router.post('/giao-vien/:idGV/sua-diem/hoc-ky-1/:idLop/post', gVController.postGvSuaDiemHK1)
+
+    // get page giáo viên sửa điểm (HK2)
+    router.get('/giao-vien/:idGV/sua-diem/hoc-ky-2/:idLop', gVController.gvSuaDiemHK2);
+
+    //post sửa điểm lên CSDL
+    router.post('/giao-vien/:idGV/sua-diem/hoc-ky-2/:idLop/post', gVController.postGvSuaDiemHK2)
+
     // module multer dùng để upload file
     var multer = require('multer')
     var storage = multer.diskStorage({
