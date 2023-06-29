@@ -240,9 +240,9 @@ let getUpdatePhuHuynhPage = async (req, res) => {
 
 let updatePhuHuynh = async (req, res) => {
     // lay so lieu da nhap tu trang chinhSuaPhuHuynh.ejs
-    let { hoTenPH, soDienThoai, diaChi, id } = req.body
-    await pool.execute('update phuhuynh set hoTenPH = ?, soDienThoai = ?, diaChi = ? where id = ?',
-        [hoTenPH, soDienThoai, diaChi, id])
+    let { hoTenPH, soDienThoai, diaChi, email, id } = req.body
+    await pool.execute('update phuhuynh set hoTenPH = ?, soDienThoai = ?, diaChi = ?, email = ? where id = ?',
+        [hoTenPH, soDienThoai, diaChi, email, id])
     // quay ve view danh sach phu huynh
     return res.redirect('/danh-sach-phu-huynh');
 }

@@ -21,6 +21,9 @@
     <div class="bang-diem">
         <button class="btn-export" onclick="ExportToExcel('xlsx', 'Bang_Diem_HK2_Lop_<%= tenLopHoc %>')">Xuất File
             Excel</button>
+        <form action="/giao-vien/<%= idGV %>/sua-diem/hoc-ky-2/<%= idLop %>" method="get">
+            <button class="btn-export" type="submit">Sửa Điểm Học Kỳ 2</button>
+        </form>
         <table id="tbl_exporttable_to_xls" border="1">
             <tr bgcolor="#ddd">
                 <th rowspan="2">STT</th>

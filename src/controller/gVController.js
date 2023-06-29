@@ -172,7 +172,7 @@ let giaoVienXemDiemLopHK1 = async (req, res) => {
     // console.log(a[0])
     let siSo = a[0]
     // render ra view xem điểm, truyền các tham số vào.
-    return res.render('giaoVienXemDiemHK1.ejs', { danhSachHocSinh: dsHS, danhSachDiem: dsDiem, tenLopHoc, idGV, hoTenGV, siSo })
+    return res.render('giaoVienXemDiemHK1.ejs', { danhSachHocSinh: dsHS, danhSachDiem: dsDiem, tenLopHoc, idGV, hoTenGV, siSo, idLop })
 }
 
 let giaoVienXemDiemLopHK2 = async (req, res) => {
@@ -227,25 +227,25 @@ let giaoVienXemDiemLopHK2 = async (req, res) => {
     // console.log(a[0])
     let siSo = a[0]
     // render ra view xem điểm, truyền các tham số vào.
-    return res.render('giaoVienXemDiemHK2.ejs', { danhSachHocSinh: dsHS, danhSachDiem: dsDiem, tenLopHoc, idGV, hoTenGV, siSo })
+    return res.render('giaoVienXemDiemHK2.ejs', { danhSachHocSinh: dsHS, danhSachDiem: dsDiem, tenLopHoc, idGV, hoTenGV, siSo, idLop })
 }
 
 let giaoVienNhapDiemLopHK1 = async (req, res) => {
-    // // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
-    // // 
-    // // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
-    // // Lấy thời gian hiện tại
-    // let currentDate = new Date();
-    // // Đặt thời gian bắt đầu và kết thúc
-    // let startDate = new Date(currentDate.getFullYear(), 8, 5); // Ngày 5 tháng 9
+    // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
+    // 
+    // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
+    // Lấy thời gian hiện tại
+    let currentDate = new Date();
+    // Đặt thời gian bắt đầu và kết thúc
+    let startDate = new Date(currentDate.getFullYear(), 5, 29); // Ngày 29 tháng 6
     // console.log(startDate)
-    // let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
-    // // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
-    // if (currentDate < startDate || currentDate > endDate) {
-    //     // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
-    //     console.log("Lỗi, hết thời gian nhập điểm");
-    //     return res.send("lỗi, đã hết thời gian nhập điểm!");
-    // }
+    let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
+    // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
+    if (currentDate < startDate || currentDate > endDate) {
+        // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
+        console.log("Lỗi, hết thời gian nhập điểm");
+        return res.render("hetThoiGianNhapDiem.ejs");
+    }
 
     // console.log(req.params)
     let { idGV, idLop } = req.params
@@ -320,20 +320,21 @@ let postgiaoVienNhapDiemLopHK1 = async (req, res) => {
 }
 
 let giaoVienNhapDiemLopHK2 = async (req, res) => {
-    // // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
-    // // 
-    // // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
-    // // Lấy thời gian hiện tại
-    // let currentDate = new Date();
-    // // Đặt thời gian bắt đầu và kết thúc
-    // let startDate = new Date(currentDate.getFullYear(), 0, 22); // Ngày 22 tháng 1
-    // let endDate = new Date(currentDate.getFullYear(), 4, 31); // Ngày 31 tháng 5
-    // // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
-    // if (currentDate < startDate || currentDate > endDate) {
-    //     // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
-    //     console.log("Lỗi, hết thời gian nhập điểm");
-    //     return res.send("lỗi, đã hết thời gian nhập điểm!");
-    // }
+    // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
+    // 
+    // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
+    // Lấy thời gian hiện tại
+    let currentDate = new Date();
+    // Đặt thời gian bắt đầu và kết thúc
+    let startDate = new Date(currentDate.getFullYear(), 5, 29); // Ngày 29 tháng 6
+    // console.log(startDate)
+    let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
+    // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
+    if (currentDate < startDate || currentDate > endDate) {
+        // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
+        console.log("Lỗi, hết thời gian nhập điểm");
+        return res.render("hetThoiGianNhapDiem.ejs");
+    }
 
     // console.log(req.params)
     let { idGV, idLop } = req.params
@@ -898,21 +899,25 @@ let gvGuiMail = async (req, res) => {
 }
 
 let gvSuaDiemHK1 = async (req, res) => {
-    // // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
-    // // 
-    // // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
-    // // Lấy thời gian hiện tại
-    // let currentDate = new Date();
-    // // Đặt thời gian bắt đầu và kết thúc
-    // let startDate = new Date(currentDate.getFullYear(), 8, 5); // Ngày 5 tháng 9
+    // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
+    // 
+    // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
+    // Lấy thời gian hiện tại
+    let currentDate = new Date();
+    // Đặt thời gian bắt đầu và kết thúc
+    let startDate = new Date(currentDate.getFullYear(), 5, 29); // Ngày 29 tháng 6
     // console.log(startDate)
-    // let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
-    // // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
-    // if (currentDate < startDate || currentDate > endDate) {
-    //     // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
-    //     console.log("Lỗi, hết thời gian nhập điểm");
-    //     return res.send("lỗi, đã hết thời gian nhập điểm!");
-    // }
+    let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
+    // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
+    if (currentDate < startDate || currentDate > endDate) {
+        // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
+        console.log("Lỗi, hết thời gian nhập điểm");
+        return res.render("hetThoiGianNhapDiem.ejs");
+    }
+    let [namhoc] = await pool.execute('select id from namhoc where tinhTrang = 1')
+    // console.log(namhoc[0].id)
+    let idNamHoc = namhoc[0].id
+    let idHK = 1
 
     // console.log(req.params)
     let { idGV, idLop } = req.params
@@ -935,7 +940,7 @@ let gvSuaDiemHK1 = async (req, res) => {
 
     let dsDiem = {} // tạo danh sách lưu điểm của học sinh để truyền vào khi render file ejs
     for (let i = 0; i < dsHS.length; i++) { // theo danh sách học sinh, select diểm của học sinh đó...
-        let [diem] = await pool.execute('select * from diem where idHS = ? and idHK = 1', [dsHS[i].id])
+        let [diem] = await pool.execute('select * from diem where idHS = ? and idHK = ? and idNamHoc = ?', [dsHS[i].id, idHK, idNamHoc])
         dsDiem[i] = diem[0] // ... và lưu vào mảng dsDem
         let a = JSON.stringify(diem)
         if (a == '[]') { // nếu học sinh đó chưa có (chưa nhập) điểm, thì truyền vào chuỗi rỗng.
@@ -968,21 +973,26 @@ let gvSuaDiemHK1 = async (req, res) => {
 }
 
 let gvSuaDiemHK2 = async (req, res) => {
-    // // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
-    // // 
-    // // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
-    // // Lấy thời gian hiện tại
-    // let currentDate = new Date();
-    // // Đặt thời gian bắt đầu và kết thúc
-    // let startDate = new Date(currentDate.getFullYear(), 8, 5); // Ngày 5 tháng 9
+    // phần code kiểm tra thời gian nhập điểm, uncomment để sử dụng 
+    // 
+    // trước tiên, kiểm tra xem thời gian nhập điểm có trong thời gian cho phép nhập điểm hay không
+    // Lấy thời gian hiện tại
+    let currentDate = new Date();
+    // Đặt thời gian bắt đầu và kết thúc
+    let startDate = new Date(currentDate.getFullYear(), 5, 29); // Ngày 29 tháng 6
     // console.log(startDate)
-    // let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
-    // // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
-    // if (currentDate < startDate || currentDate > endDate) {
-    //     // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
-    //     console.log("Lỗi, hết thời gian nhập điểm");
-    //     return res.send("lỗi, đã hết thời gian nhập điểm!");
-    // }
+    let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
+    // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
+    if (currentDate < startDate || currentDate > endDate) {
+        // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
+        console.log("Lỗi, hết thời gian nhập điểm");
+        return res.render("hetThoiGianNhapDiem.ejs");
+    }
+
+    let [namhoc] = await pool.execute('select id from namhoc where tinhTrang = 1')
+    // console.log(namhoc[0].id)
+    let idNamHoc = namhoc[0].id
+    let idHK = 2
 
     // console.log(req.params)
     let { idGV, idLop } = req.params
@@ -1005,7 +1015,7 @@ let gvSuaDiemHK2 = async (req, res) => {
 
     let dsDiem = {} // tạo danh sách lưu điểm của học sinh để truyền vào khi render file ejs
     for (let i = 0; i < dsHS.length; i++) { // theo danh sách học sinh, select diểm của học sinh đó...
-        let [diem] = await pool.execute('select * from diem where idHS = ? and idHK = 2', [dsHS[i].id])
+        let [diem] = await pool.execute('select * from diem where idHS = ? and idHK = ? and idNamHoc = ?', [dsHS[i].id, idHK, idNamHoc])
         dsDiem[i] = diem[0] // ... và lưu vào mảng dsDem
         let a = JSON.stringify(diem)
         if (a == '[]') { // nếu học sinh đó chưa có (chưa nhập) điểm, thì truyền vào chuỗi rỗng.
@@ -1034,7 +1044,7 @@ let gvSuaDiemHK2 = async (req, res) => {
     }
     // console.log(dsHS)
     // console.log(dsDiem)
-    return res.render('gvSuaDiemHK2.ejs', { dataHocSinh: dsHS, idGV, idLop, siSo, tenLopHoc, hoTenGV, dsDiem })
+    return res.render('gvSuaDiemHK1.ejs', { dataHocSinh: dsHS, idGV, idLop, siSo, tenLopHoc, hoTenGV, dsDiem })
 }
 
 let postGvSuaDiemHK1 = async (req, res) => {

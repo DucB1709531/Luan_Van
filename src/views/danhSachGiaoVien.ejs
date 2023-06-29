@@ -60,6 +60,11 @@
                             </form>
                         </td>
                         <td>
+                            <form action="/sua-thong-tin-giao-vien/<%= dataGiaoVien[i].id %>" method="GET">
+                                <button class="btn-sua-tt-hs" type="submit">Sửa thông tin</button>
+                            </form>
+                        </td>
+                        <td>
                             <form action="/delete-giao-vien" method="POST">
                                 <input type="text" hidden value="<%= dataGiaoVien[i].id %>" name="idGiaoVien">
                                 <button class="btn-sua-tt-hs" type="submit"
