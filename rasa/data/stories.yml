@@ -1,39 +1,86 @@
 version: "3.1"
 
 stories:
-
-- story: greet and praise
+- story: Hỏi chào hỏi thăm
   steps:
   - intent: greet
   - action: utter_greet
+
+- story: Hỏi đăng nhập
+  steps:
+  - intent: hoi_dang_nhap
+  - action: utter_dang_nhap
+
+- story: Hỏi cảm ơn
+  steps:
+  - intent: thanks
+  - action: utter_yourrewellcome
+
+- story: Khen
+  steps:
   - intent: praise
   - action: utter_happy
 
-- story: greet and decry
+- story: Phủ định
   steps:
-  - intent: greet
-  - action: utter_greet
+  - intent: deny
+  - action: utter_askagain
+
+- story: Chê
+  steps:
   - intent: decry
   - action: utter_sad
 
-- story: ask who I am
+- story: Hỏi đang nói chuyện với ai
   steps:
   - intent: talk_to_who
   - action: utter_iamabot
 
-- story: ask if I'm a chatbot
+- story: Hỏi xem điểm
+  steps:
+  - intent: xem_diem
+  - action: utter_diemso
+
+- story: Hỏi xem sức khỏe
+  steps:
+  - intent: xem_suc_khoe
+  - action: utter_suc_khoe
+
+- story: Hỏi xem thông báo
+  steps:
+  - intent: xem_thong_bao
+  - action: utter_thong_bao
+
+- story: Hỏi xem điểm và cảm ơn
+  steps:
+  - intent: xem_diem
+  - action: utter_diemso
+  - intent: thanks
+  - action: utter_yourrewellcome
+
+- story: Hỏi xem sức khỏe và cảm ơn
+  steps:
+  - intent: xem_suc_khoe
+  - action: utter_suc_khoe
+  - intent: thanks
+  - action: utter_yourrewellcome
+
+- story: Hỏi xem thông báo và cảm ơn
+  steps:
+  - intent: xem_thong_bao
+  - action: utter_thong_bao
+  - intent: thanks
+  - action: utter_yourrewellcome
+
+- story: Hỏi chatbot là gì
   steps:
   - intent: is_bot
   - action: utter_yesiamabot
 
-- story: goodbye and express thanks
+- story: Hỏi chatbot là gì và cảm ơn
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - intent: is_bot
+  - action: utter_yesiamabot
   - intent: thanks
   - action: utter_yourrewellcome
 
-- story: deny and ask again
-  steps:
-  - intent: deny
-  - action: utter_askagain

@@ -29,6 +29,18 @@ nlu:
     - ok bye
     - ok bye bye
 
+- intent: hoi_dang_nhap
+  examples: |
+    - làm sao để đăng nhập?
+    - đăng nhập ở đâu?
+    - đăng nhập
+    - làm sao tôi có thể đăng nhập?
+    - đăng nhập như thế nào?
+    - làm sao đăng nhập
+    - chỉ tôi đăng nhập
+    - cách để đăng nhập
+
+
 - intent: thanks
   examples: |
     - cám ơn

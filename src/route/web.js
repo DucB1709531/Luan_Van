@@ -21,6 +21,14 @@ const initWebRoute = (app) => {
     //dang nhap
     router.post('/post-dang-nhap', homeController.dangNhap);
 
+    router.get('/quen-mat-khau', homeController.quenMatKhau);
+
+    router.post('/gui-ma-xac-minh', homeController.maXacMinh);
+
+    router.post('/nhap-mat-khau-moi', homeController.nhapMatKhauMoi);
+
+    router.post('/reset-mat-khau', homeController.resetMatKhau);
+
     //view admin:
     router.get('/admin', homeController.getViewAdmin);
 

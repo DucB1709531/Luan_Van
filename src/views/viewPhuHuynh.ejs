@@ -181,42 +181,57 @@
             <label for="msg"><b>Nhắn Tin</b></label>
             <textarea placeholder="Nhập Tin nhắn.." name="msg" id="chatInput" required></textarea>
             <button type="submit" class="btn" id="sendButton">Gửi</button>
-            <textarea class="chat-output" placeholder="Trả lời" name="output" id="chatOutput" readonly></textarea>
+            <div class="chat-output-container">
+                <div class="chat-output" id="chatOutput"></div>
+                <div id="loginLinkContainer"></div>
+            </div>
         </form>
     </div>
+
 
     <script>
         function sendMessage(event) {
             event.preventDefault(); // Không tải lại trang
 
-            var message = { // lấy nội dung tin nhắn phụ huynh nhập vào
-                message: document.getElementById("chatInput").value
+            var message = {
+                message: document.getElementById("chatInput").value,
             };
-            // post nội dung tin nhắn lên rasa (cổng 5005)
+
             fetch("http://localhost:5005/webhooks/rest/webhook", {
                 method: "POST",
-                headers: { // set Headers
-                    "Content-Type": "application/json"
+                headers: {
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify(message) // nội dung tin nhắn của phụ huynh
+                body: JSON.stringify(message),
             })
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("chatOutput").value = data[0].text; // In câu trả lời của bot
-                    document.getElementById("chatInput").value = ""; // Clear chat input 
+                .then((response) => response.json())
+                .then((data) => {
+                    var output = data[0].text;
+
+                    // Kiểm tra nếu câu trả lời chứa đường link đăng nhập
+                    var linkRegex = /\[link\]/;
+                    var match = output.match(linkRegex);
+
+                    if (match) {
+                        var loginLink = "http://localhost:3000/dang-nhap";
+
+                        // Tạo đường link clickable
+                        var clickableLink = "<a href='" + loginLink + "' target='_blank'>" + loginLink + "</a>";
+
+                        // Thay thế đường link đầu tiên trong câu trả lời bằng đường link clickable
+                        output = output.replace(linkRegex, clickableLink);
+                    }
+
+                    document.getElementById("chatOutput").innerHTML = output;
+                    document.getElementById("chatInput").value = "";
                 })
-                .catch(error => {
-                    // xử lý lỗi
+                .catch((error) => {
                     console.error(error);
                 });
         }
 
-        // gọi hàm sendMessage khi nhấn nút submit
         document.getElementById("chatForm").addEventListener("submit", sendMessage);
     </script>
-
-
-
 
 
 

@@ -3,6 +3,7 @@ version: "3.1"
 intents:
   - greet
   - goodbye
+  - hoi_dang_nhap
   - thanks
   - praise
   - deny
@@ -21,6 +22,9 @@ responses:
   utter_goodbye:
   - text: "Chào tạm biệt và hẹn gặp lại quý phụ huynh!"
   - text: "Hẹn gặp lại quý phụ huynh!"
+
+  utter_dang_nhap:
+  - text: "Để đăng nhập, quý phụ huynh hãy bấm vào link này: [link], sau đó đăng nhập bằng tài khoản của nhà trường cung cấp"
 
   utter_yourrewellcome:
   - text: "Không có chi, rất vui vì đã giúp đỡ được quý phụ huynh!"
@@ -48,13 +52,13 @@ responses:
 
 
   utter_diemso:
-  - text: "Để xem kết quả học tập của học sinh, quý phụ huynh vui lòng đăng nhập vào hệ thống bằng tài khoản do nhà trường cung cấp, sau đó chọn phần <Xem Kết Quả Học Tập>"
+  - text: "để xem điểm và kết quả học tập của học sinh, phụ huynh vui lòng đăng nhập, sau đó chọn phần Xem kết quả học tập"
 
   utter_suc_khoe:
-  - text: "Để xem báo cáo sức khỏe của học sinh, quý phụ huynh vui lòng đăng nhập vào hệ thống bằng tài khoản do nhà trường cung cấp, sau đó chọn phần <Xem báo Cáo Sức Khỏe>"
+  - text: "Để xem báo cáo sức khỏe của học sinh, quý phụ huynh vui lòng đăng nhập, sau đó chọn phần Xem báo Cáo Sức Khỏe"
 
   utter_thong_bao:
-  - text: "Để xem thông báo lớp học sinh, quý phụ huynh vui lòng đăng nhập vào hệ thống bằng tài khoản do nhà trường cung cấp, sau đó chọn phần <Xem Thông Báo Lớp"
+  - text: "Để xem thông báo lớp học sinh, quý phụ huynh vui lòng đăng nhập, sau đó chọn phần Xem Thông Báo Lớp"
 
   utter_fallback:
   - text: "Xin lỗi, tôi chưa hiểu ý của quý phụ huynh, quý phụ huynh vui lòng nói rõ hơn được không ạ?"

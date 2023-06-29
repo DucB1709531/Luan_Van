@@ -12,6 +12,11 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
+- rule: hướng dẫn đăng nhập
+  steps:
+  - intent: hoi_dang_nhap
+  - action: utter_dang_nhap
+
 - rule: nói "tôi là robot" mỗi khi phụ huynh hỏi đang nói chuyện với ai
   steps:
   - intent: talk_to_who
