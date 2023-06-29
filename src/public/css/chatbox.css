@@ -1,5 +1,10 @@
 .chat-popup {
     margin-left: 3%;
+    width: 50%;
+}
+
+.chat-output-container {
+    float: left;
 }
 
 /* Button used to open the chat form - fixed at the bottom of the page */
@@ -28,7 +33,6 @@
 
 /* Add styles to the form container */
 .form-container {
-    max-width: 300px;
     padding: 10px;
     background-color: white;
 }
@@ -41,7 +45,8 @@
     border: none;
     background: #f1f1f1;
     resize: none;
-    min-height: 150px;
+    min-height: 100px;
+    font-size: 20px;
 }
 
 /* When the textarea gets focus, do something */
@@ -71,4 +76,10 @@
 .form-container .btn:hover,
 .open-button:hover {
     opacity: 1;
+}
+
+.chat-output {
+
+    font-size: 20px;
+    /* Tăng kích thước chữ */
 }
