@@ -8,7 +8,18 @@ import smtpTransport from 'nodemailer-smtp-transport';
 const Lead = require("../../node_modules/lead");
 const path = require('path');
 
+// ngày cho phép nhập điểm
+// học kỳ 1
+var ngayBD = 30 // từ ngày 30 tháng 6 năm trước
+var thangBD = 5
+var ngayKT = 15 // cho đến ngày 15 tháng 1 năm sau
+var thangKT = 0
 
+// học kỳ 2
+var ngayBD2 = 15 // từ ngày 30 tháng 6 năm trước
+var thangBD2 = 1
+var ngayKT2 = 25 // cho đến ngày 15 tháng 1 năm sau
+var thangKT2 = 5
 
 let giaoVienGetUpdateGiaoVienPage = async (req, res) => {
     // lay id giao vien tu req.params
@@ -237,9 +248,9 @@ let giaoVienNhapDiemLopHK1 = async (req, res) => {
     // Lấy thời gian hiện tại
     let currentDate = new Date();
     // Đặt thời gian bắt đầu và kết thúc
-    let startDate = new Date(currentDate.getFullYear(), 5, 29); // Ngày 29 tháng 6
+    let startDate = new Date(currentDate.getFullYear(), thangBD, ngayBD); // Ngày 30 tháng 6
     // console.log(startDate)
-    let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
+    let endDate = new Date(currentDate.getFullYear() + 1, thangKT, ngayKT); // Ngày 15 tháng 1 năm sau
     // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
     if (currentDate < startDate || currentDate > endDate) {
         // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
@@ -326,9 +337,9 @@ let giaoVienNhapDiemLopHK2 = async (req, res) => {
     // Lấy thời gian hiện tại
     let currentDate = new Date();
     // Đặt thời gian bắt đầu và kết thúc
-    let startDate = new Date(currentDate.getFullYear(), 5, 29); // Ngày 29 tháng 6
+    let startDate = new Date(currentDate.getFullYear(), thangBD2, ngayBD2); // Ngày 29 tháng 6
     // console.log(startDate)
-    let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
+    let endDate = new Date(currentDate.getFullYear() + 1, thangKT2, ngayKT2); // Ngày 15 tháng 1 năm sau
     // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
     if (currentDate < startDate || currentDate > endDate) {
         // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
@@ -905,9 +916,9 @@ let gvSuaDiemHK1 = async (req, res) => {
     // Lấy thời gian hiện tại
     let currentDate = new Date();
     // Đặt thời gian bắt đầu và kết thúc
-    let startDate = new Date(currentDate.getFullYear(), 5, 29); // Ngày 29 tháng 6
+    let startDate = new Date(currentDate.getFullYear(), thangBD, ngayBD); // Ngày 29 tháng 6
     // console.log(startDate)
-    let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
+    let endDate = new Date(currentDate.getFullYear() + 1, thangKT, ngayKT); // Ngày 15 tháng 1 năm sau
     // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
     if (currentDate < startDate || currentDate > endDate) {
         // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:
@@ -979,9 +990,9 @@ let gvSuaDiemHK2 = async (req, res) => {
     // Lấy thời gian hiện tại
     let currentDate = new Date();
     // Đặt thời gian bắt đầu và kết thúc
-    let startDate = new Date(currentDate.getFullYear(), 5, 29); // Ngày 29 tháng 6
+    let startDate = new Date(currentDate.getFullYear(), thangBD2, ngayBD2); // Ngày 29 tháng 6
     // console.log(startDate)
-    let endDate = new Date(currentDate.getFullYear() + 1, 0, 15); // Ngày 15 tháng 1 năm sau
+    let endDate = new Date(currentDate.getFullYear() + 1, thangKT2, ngayKT2); // Ngày 15 tháng 1 năm sau
     // Kiểm tra nếu thời gian hiện tại nằm ngoài thời hạn
     if (currentDate < startDate || currentDate > endDate) {
         // nếu thời gian nhập điểm nằm ngoài hạn nhập điểm: báo lỗi, không cho nhập điểm:

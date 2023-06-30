@@ -13,6 +13,9 @@ let phuHuynhXemThongTinHocSinh = async (req, res) => {
 
     let [hocsinh] = await pool.execute('select * from hocsinh where id = ?', [idHS])
     // console.log(hocsinh[0])
+    if (hocsinh[0].idLop == null) {
+        return res.render("loiHSChuaCoLop.ejs")
+    }
     let hoTenHS = hocsinh[0].hoTen
 
     let [phuhuynh] = await pool.execute('select * from phuhuynh where id = ?', [idPH])
@@ -20,9 +23,11 @@ let phuHuynhXemThongTinHocSinh = async (req, res) => {
     let hoTenPH = phuhuynh[0].hoTenPH
     let soDienThoaiPH = phuhuynh[0].soDienThoai
 
+    // console.log("idlop: " + hocsinh[0].idLop)
     let idLop = hocsinh[0].idLop
     let [lop] = await pool.execute('select * from lophoc where id = ?', [idLop])
     // console.log(lop)
+
     let tenLop = lop[0].tenLop
 
     let [giaovien] = await pool.execute('select * from giaovien where id = ?', [lop[0].idGV])
@@ -121,6 +126,9 @@ let phuHuynhXemSucKhoeHocSinh = async (req, res) => {
 
     let [hocsinh] = await pool.execute('select * from hocsinh where id = ?', [idHS])
     // console.log(hocsinh[0])
+    if (hocsinh[0].idLop == null) {
+        return res.render("loiHSChuaCoLop.ejs")
+    }
     let hoTenHS = hocsinh[0].hoTen
 
     let [phuhuynh] = await pool.execute('select * from phuhuynh where id = ?', [idPH])
@@ -170,8 +178,14 @@ let phuHuynhXemSucKhoeHocSinh = async (req, res) => {
 
 let PHXemThongBaoLop = async (req, res) => {
     let { idPH, idHS } = req.params
+    let [hocsinh] = await pool.execute('select * from hocsinh where id = ?', [idHS])
+    // console.log(hocsinh[0])
+    if (hocsinh[0].idLop == null) {
+        return res.render("loiHSChuaCoLop.ejs")
+    }
     // console.log(idPH, idHS)
     let [lop] = await pool.execute('select idLop from hocsinh where id = ?', [idHS])
+
     // console.log(lop[0].idLop)
     let idLop = lop[0].idLop
 
