@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phụ Huynh: <%= hoTenPH %>
+    <title>Phụ hynh: <%= hoTenPH %>
     </title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/carousel.css">
@@ -20,38 +20,38 @@
         </div>
 
         <div class="navbar">
-            <a href="/phu-huynh/<%= idPH %>">Trang Chủ</a>
+            <a href="/phu-huynh/<%= idPH %>">Trang chủ</a>
 
             <div class="dropdown">
-                <button class="dropbtn">Xem Kết Quả Học Tập
+                <button class="dropbtn">Xem kết quả học tập
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
                     <% for(let i=0; i< dsHocSinh.length; i++){ %>
-                        <a href="/phu-huynh/<%= idPH %>/xem-thong-tin-hoc-sinh/<%= dsHocSinh[i].id %>">Học Sinh: <%=
+                        <a href="/phu-huynh/<%= idPH %>/xem-thong-tin-hoc-sinh/<%= dsHocSinh[i].id %>">Học sinh: <%=
                                 dsHocSinh[i].hoTen %></a>
                         <% } %>
                 </div>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">Xem Báo Cáo Sức Khỏe
+                <button class="dropbtn">Xem báo cáo sức khỏe
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
                     <% for(let i=0; i< dsHocSinh.length; i++){ %>
-                        <a href="/phu-huynh/<%= idPH %>/xem-suc-khoe-hoc-sinh/<%= dsHocSinh[i].id %>">Học Sinh: <%=
+                        <a href="/phu-huynh/<%= idPH %>/xem-suc-khoe-hoc-sinh/<%= dsHocSinh[i].id %>">Học sinh: <%=
                                 dsHocSinh[i].hoTen %></a>
                         <% } %>
                 </div>
             </div>
 
             <div class="dropdown">
-                <button class="dropbtn">Xem Thông Báo Lớp
+                <button class="dropbtn">Xem thông báo lớp
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
                     <% for(let i=0; i< dsHocSinh.length; i++){ %>
-                        <a href="/phu-huynh/<%= idPH %>/xem-thong-bao-lop-cua-hoc-sinh/<%= dsHocSinh[i].id %>">Lớp Của:
+                        <a href="/phu-huynh/<%= idPH %>/xem-thong-bao-lop-cua-hoc-sinh/<%= dsHocSinh[i].id %>">Lớp của:
                             <%= dsHocSinh[i].hoTen %>
                         </a>
                         <% } %>
@@ -102,7 +102,7 @@
         <label for="indicator-10" class="carousel-button"></label>
     </div>
     <div class="news-index">
-        <h1 class="news-title"> Tin Nổi Bật<table></table>
+        <h1 class="news-title"> Tin nổi bật<table></table>
         </h1>
         <div class="news-block">
             <div class="news">
@@ -131,7 +131,7 @@
             <div class="news">
                 <a
                     href="http://ninhkieu.edu.vn/thnguyendu/chuyen-de-giao-duc/thong-bao/thong-bao-cua-truong/thong-bao-danh-muc-sach-giao-khoa-lop-4-nam-hoc-2023-2024-cua-truong-th-nguyen-du.html">
-                    Hoạt Động Mừng Xuân Quý Mão 2023</a>
+                    Hoạt động mừng xuân Quý Mão 2023</a>
             </div>
             <div class="news-img">
                 <img src="/images/news/news3.png">
@@ -177,8 +177,8 @@
 
     <div class="chat-popup" id="myForm">
         <form class="form-container" id="chatForm">
-            <h1>Chat Bot Hỗ Trợ</h1>
-            <label for="msg"><b>Nhắn Tin</b></label>
+            <h1>Chat bot hỗ trợ</h1>
+            <label for="msg"><b>Nhắn tin</b></label>
             <textarea placeholder="Nhập Tin nhắn.." name="msg" id="chatInput" required class="textin"></textarea>
             <button type="submit" class="btn" id="sendButton">Gửi</button>
             <div class="chat-output-container">

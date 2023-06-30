@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mãu Nhập Điểm Lớp <%= tenLop %>
+    <title>Mãu nhập điểm lớp <%= tenLop %>
     </title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bangDiem.css">
@@ -14,15 +14,15 @@
 
 <body>
     <br>
-    <h1 class="title-ds-hs"><b>Mẫu Nhập Điểm</b></h1>
+    <h1 class="title-ds-hs"><b>Mẫu nhập điểm</b></h1>
     <h1 class="title-ds-hs"><b>Lớp <%= tenLop %></b></h1>
     <div class="bang-diem">
-        <button class="btn-export" onclick="ExportToExcel('xlsx', 'Mau_Nhap_Diem_Lop_<%= idLop %>')">Xuất File
-            Excel</button>
+        <button class="btn-export" onclick="ExportToExcel('xlsx', 'Mau_Nhap_Diem_Lop_<%= idLop %>')">Xuất file
+            excel</button>
         <table id="tbl_exporttable_to_xls" border="1">
             <tr bgcolor="#ddd">
                 <th>STT</th>
-                <th>Mã Số Học Sinh</th>
+                <th>Mã số học sinh</th>
                 <th>Họ tên</th>
                 <th colspan="2">Toán</th>
                 <th colspan="2">Tiếng Việt</th>
@@ -40,23 +40,23 @@
                 <th></th>
                 <th></th>
                 <th>Điểm</th>
-                <th>Nhận Xét</th>
+                <th>Nhận xét</th>
                 <th>Điểm</th>
-                <th>Nhận Xét</th>
+                <th>Nhận xét</th>
                 <th>Điểm</th>
-                <th>Nhận Xét</th>
+                <th>Nhận xét</th>
                 <th>Điểm</th>
-                <th>Nhận Xét</th>
+                <th>Nhận xét</th>
                 <th>Điểm</th>
-                <th>Nhận Xét</th>
+                <th>Nhận xét</th>
                 <th>Điểm</th>
-                <th>Nhận Xét</th>
+                <th>Nhận xét</th>
                 <th>Điểm</th>
-                <th>Nhận Xét</th>
+                <th>Nhận xét</th>
                 <th>Điểm</th>
-                <th>Nhận Xét</th>
+                <th>Nhận xét</th>
                 <th>Điểm</th>
-                <th>Nhận Xét</th>
+                <th>Nhận xét</th>
             </tr>
             <% for(let i=0; i< danhSachHocSinh.length; i++){ %>
                 <tr>

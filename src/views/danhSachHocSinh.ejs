@@ -4,37 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Học Sinh</title>
+    <title>Danh sách học sinh</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <div class="topnav">
-        <a class="active" href="/danh-sach-hoc-sinh" method="GET">Danh Sách Học Sinh</a>
-        <a href="/them-hoc-sinh-page" method="GET">Thêm Học Sinh</a>
-        <a href="/danh-sach-phu-huynh" method="GET">Danh Sách Phụ Huynh</a>
-        <a href="/them-phu-huynh-page" method="GET">Thêm Phụ Huynh</a>
-        <a href="/danh-sach-giao-vien" method="GET">Danh Sách Giáo Viên</a>
-        <a href="/them-giao-vien-page" method="GET">Thêm Giáo Viên</a>
-        <a href="/danh-sach-lop-hoc" method="GET">Danh Sách Lớp Học</a>
-        <a href="/them-lop-hoc-page" method="GET">Thêm Lớp Học</a>
+        <a class="active" href="/danh-sach-hoc-sinh" method="GET">Danh sách học sinh</a>
+        <a href="/them-hoc-sinh-page" method="GET">Thêm học sinh</a>
+        <a href="/danh-sach-phu-huynh" method="GET">Danh sách phụ huynh</a>
+        <a href="/them-phu-huynh-page" method="GET">Thêm phụ huynh</a>
+        <a href="/danh-sach-giao-vien" method="GET">Danh sách giáo viên</a>
+        <a href="/them-giao-vien-page" method="GET">Thêm giáo viên</a>
+        <a href="/danh-sach-lop-hoc" method="GET">Danh sách lớp học</a>
+        <a href="/them-lop-hoc-page" method="GET">Thêm lớp học</a>
     </div>
     <div>
         <div class='table-container'>
-            <h2><b>Danh Sách Học Sinh</b></h2>
+            <h2><b>Danh sách học sinh</b></h2>
             <form action="/danh-sach-hoc-sinh/export" method="GET">
-                <button class="btn-export" type="submit">Xuất File Excel</button>
+                <button class="btn-export" type="submit">Xuất file excel</button>
             </form>
             <table border="1">
                 <thead>
                     <tr>
                         <th>STT</th>
-                        <th>Mã Số</th>
-                        <th>Họ Tên</th>
-                        <th>Ngày Sinh</th>
-                        <th>Giới Tính</th>
-                        <th>ID Phụ Huynh</th>
-                        <th>ID Lớp Học</th>
+                        <th>Mã số</th>
+                        <th>Họ tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Giới tính</th>
+                        <th>ID phụ huynh</th>
+                        <th>ID lớp học</th>
                         <th> </th>
                         <th> </th>
                     </tr>
@@ -74,7 +74,7 @@
                                 </td>
                                 <td>
                                     <form action="/sua-thong-tin-hoc-sinh/<%= dataHocSinh[i].id %>" method="GET">
-                                        <button class="btn-sua-tt-hs" type="submit">Sửa Thông Tin</button>
+                                        <button class="btn-sua-tt-hs" type="submit">Sửa thông tin</button>
                                     </form>
                                 </td>
                             </tr>

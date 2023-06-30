@@ -1055,7 +1055,7 @@ let gvSuaDiemHK2 = async (req, res) => {
     }
     // console.log(dsHS)
     // console.log(dsDiem)
-    return res.render('gvSuaDiemHK1.ejs', { dataHocSinh: dsHS, idGV, idLop, siSo, tenLopHoc, hoTenGV, dsDiem })
+    return res.render('gvSuaDiemHK2.ejs', { dataHocSinh: dsHS, idGV, idLop, siSo, tenLopHoc, hoTenGV, dsDiem })
 }
 
 let postGvSuaDiemHK1 = async (req, res) => {

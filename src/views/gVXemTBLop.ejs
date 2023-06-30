@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xem Thông Báo Lớp Học</title>
+    <title>Xem thông báo lớp học</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/index.css">
 </head>
@@ -14,66 +14,66 @@
         <!-- <img class="img-pannel" src="/images/truonghoc.png" alt="pannel"> -->
     </div>
     <div class="navbar">
-        <a href="/giao-vien/<%= idGV %>">Trang Chủ</a>
-        <a href="/giao-vien/<%= idGV %>/xem-lop-hoc">Thông Tin Lớp Học</a>
+        <a href="/giao-vien/<%= idGV %>">Trang chủ</a>
+        <a href="/giao-vien/<%= idGV %>/xem-lop-hoc">Thông tin lớp học</a>
         <div class="dropdown">
             <form id="ds-hs" action="/danh-sach-hoc-sinh-lop/<%= idLop %>" method="GET">
-                <a href="#" onclick="document.getElementById('ds-hs').submit()">Danh Sách Học Sinh</a>
+                <a href="#" onclick="document.getElementById('ds-hs').submit()">Danh sách học sinh</a>
             </form>
         </div>
         <div class="dropdown">
-            <button class="dropbtn">Xem Điểm
+            <button class="dropbtn">Xem điểm
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
                 <form id="xem-diem-hk1" action="/giao-vien/<%= idGV %>/xem-diem/hoc-ky-1/<%= idLop %>" method="GET">
-                    <a href="#" onclick="document.getElementById('xem-diem-hk1').submit()">Xem Điểm Học Kỳ 1</a>
+                    <a href="#" onclick="document.getElementById('xem-diem-hk1').submit()">Xem điểm học kỳ 1</a>
                 </form>
                 <form id="xem-diem-hk2" action="/giao-vien/<%= idGV %>/xem-diem/hoc-ky-2/<%= idLop %>" method="GET">
-                    <a href="#" onclick="document.getElementById('xem-diem-hk2').submit()">Xem Điểm Học Kỳ 2</a>
+                    <a href="#" onclick="document.getElementById('xem-diem-hk2').submit()">Xem điểm học kỳ 2</a>
                 </form>
             </div>
         </div>
         <div class="dropdown">
-            <button class="dropbtn">Nhập Điểm
+            <button class="dropbtn">Nhập điểm
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
                 <form id="nhap-diem-hk1" action="/giao-vien/<%= idGV %>/nhap-diem/hoc-ky-1/<%= idLop %>" method="GET">
-                    <a href="#" onclick="document.getElementById('nhap-diem-hk1').submit()">Nhập Điểm Học Kỳ 1</a>
+                    <a href="#" onclick="document.getElementById('nhap-diem-hk1').submit()">Nhập điểm học kỳ 1</a>
                 </form>
                 <form id="nhap-diem-hk2" action="/giao-vien/<%= idGV %>/nhap-diem/hoc-ky-2/<%= idLop %>" method="GET">
-                    <a href="#" onclick="document.getElementById('nhap-diem-hk2').submit()">Nhập Điểm Học Kỳ 2</a>
+                    <a href="#" onclick="document.getElementById('nhap-diem-hk2').submit()">Nhập điểm học kỳ 2</a>
                 </form>
             </div>
         </div>
         <div class="dropdown">
-            <button class="dropbtn">Cập Nhật Điểm
+            <button class="dropbtn">Cập nhật điểm
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
                 <form id="sua-diem-hk1" action="/giao-vien/<%= idGV %>/sua-diem/hoc-ky-1/<%= idLop %>" method="GET">
-                    <a href="#" onclick="document.getElementById('sua-diem-hk1').submit()">Điểm Học Kỳ 1</a>
+                    <a href="#" onclick="document.getElementById('sua-diem-hk1').submit()">Điểm học kỳ 1</a>
                 </form>
                 <form id="sua-diem-hk2" action="/giao-vien/<%= idGV %>/sua-diem/hoc-ky-2/<%= idLop %>" method="GET">
-                    <a href="#" onclick="document.getElementById('sua-diem-hk2').submit()">Điểm Học Kỳ 2</a>
+                    <a href="#" onclick="document.getElementById('sua-diem-hk2').submit()">Điểm học kỳ 2</a>
                 </form>
             </div>
         </div>
 
         <div class="dropdown">
-            <button class="dropbtn">Sức Khỏe
+            <button class="dropbtn">Sức khỏe
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
                 <form id="xem-sk-hs" action="/giao-vien/<%= idGV %>/xem-lop-hoc/<%= idLop %>/xem-suc-khoe" method="GET">
-                    <a href="#" onclick="document.getElementById('xem-sk-hs').submit()">Xem Tình Hình Sức Khỏe Học
-                        Sinh</a>
+                    <a href="#" onclick="document.getElementById('xem-sk-hs').submit()">Xem tình hình sức khỏe học
+                        sinh</a>
                 </form>
                 <form id="cap-nhat-sk-hs" action="/giao-vien/<%= idGV %>/xem-lop-hoc/<%= idLop %>/cap-nhat-suc-khoe"
                     method="GET">
-                    <a href="#" onclick="document.getElementById('cap-nhat-sk-hs').submit()">Cập Nhật Tình Hình Sức Khỏe
-                        Học Sinh</a>
+                    <a href="#" onclick="document.getElementById('cap-nhat-sk-hs').submit()">Cập nhật tình hình sức khỏe
+                        học sinh</a>
                 </form>
             </div>
         </div>
